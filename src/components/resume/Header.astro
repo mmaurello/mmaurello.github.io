@@ -6,105 +6,28 @@ interface Props {
 }
 
 const { header } = Astro.props;
+
+const chipBase =
+	'inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-800 no-underline transition-colors hover:border-accent hover:text-accent print:border-gray-300 print:bg-transparent print:text-black print:no-underline';
+const chipAccent =
+	'inline-flex items-center rounded-full border border-transparent bg-accent-light px-3 py-1.5 text-xs font-medium text-accent no-underline transition-colors hover:bg-accent hover:text-white print:border-gray-300 print:bg-transparent print:text-black print:no-underline';
 ---
 
-<header class="card header">
-	<div class="header-main">
-		<h1>{header.name}</h1>
-		<p class="header-title">{header.title}</p>
-		<p class="header-location">{header.location}</p>
+<header class="flex flex-col gap-5 rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:flex-row sm:items-start sm:justify-between sm:p-7 print:border-gray-300 print:shadow-none print:break-inside-avoid">
+	<div>
+		<h1 class="m-0 text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">{header.name}</h1>
+		<p class="mt-1 text-lg font-medium text-accent print:text-black">{header.title}</p>
+		<p class="mt-1.5 text-[0.9375rem] text-slate-500">{header.location}</p>
 	</div>
-	<div class="header-contact">
-		<a href={`mailto:${header.email}`} class="chip">{header.email}</a>
-		<a href={`tel:${header.phone.replace(/\s/g, '')}`} class="chip">{header.phone}</a>
+	<div class="flex flex-wrap gap-2 sm:max-w-80 sm:justify-end">
+		<a href={`mailto:${header.email}`} class={chipBase}>{header.email}</a>
+		<a href={`tel:${header.phone.replace(/\s/g, '')}`} class={chipBase}>{header.phone}</a>
 		{
 			header.links.map((link) => (
-				<a href={link.url} class="chip chip-accent" target="_blank" rel="noopener noreferrer">
+				<a href={link.url} class={chipAccent} target="_blank" rel="noopener noreferrer">
 					{link.label}
 				</a>
 			))
 		}
 	</div>
 </header>
-
-<style>
-	.header {
-		display: flex;
-		flex-direction: column;
-		gap: 1.25rem;
-	}
-
-	.header-main h1 {
-		margin: 0;
-		font-size: 2rem;
-		font-weight: 700;
-		color: var(--color-text);
-		letter-spacing: -0.02em;
-	}
-
-	.header-title {
-		margin: 0.25rem 0 0;
-		font-size: 1.125rem;
-		font-weight: 500;
-		color: var(--color-accent);
-	}
-
-	.header-location {
-		margin: 0.375rem 0 0;
-		font-size: 0.9375rem;
-		color: var(--color-text-muted);
-	}
-
-	.header-contact {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-	}
-
-	.chip {
-		display: inline-flex;
-		align-items: center;
-		padding: 0.375rem 0.75rem;
-		font-size: 0.8125rem;
-		font-weight: 500;
-		color: var(--color-text);
-		text-decoration: none;
-		background: var(--color-surface-alt);
-		border: 1px solid var(--color-border);
-		border-radius: 999px;
-		transition: border-color 0.15s, color 0.15s;
-	}
-
-	.chip:hover {
-		border-color: var(--color-accent);
-		color: var(--color-accent);
-	}
-
-	.chip-accent {
-		background: var(--color-accent-light);
-		border-color: transparent;
-		color: var(--color-accent);
-	}
-
-	.chip-accent:hover {
-		background: var(--color-accent);
-		color: white;
-	}
-
-	@media (min-width: 640px) {
-		.header {
-			flex-direction: row;
-			justify-content: space-between;
-			align-items: flex-start;
-		}
-
-		.header-main h1 {
-			font-size: 2.25rem;
-		}
-
-		.header-contact {
-			justify-content: flex-end;
-			max-width: 20rem;
-		}
-	}
-</style>

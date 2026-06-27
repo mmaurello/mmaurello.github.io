@@ -10,19 +10,19 @@ const { education } = Astro.props;
 ---
 
 <Section title="Education">
-	<ul class="entry-list">
+	<ul class="m-0 flex list-none flex-col gap-5 p-0">
 		{
 			education.map((edu) => (
-				<li class="entry">
-					<div class="entry-header">
+				<li>
+					<div class="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
 						<div>
-							<h3 class="entry-title">{edu.degree}</h3>
-							<p class="entry-subtitle">
+							<h3 class="m-0 text-[1.0625rem] font-semibold text-slate-800">{edu.degree}</h3>
+							<p class="mt-0.5 text-sm text-slate-500">
 								{edu.institution} · {edu.location}
 							</p>
-							{edu.details && <p class="entry-details">{edu.details}</p>}
+							{edu.details && <p class="mt-1.5 text-sm text-slate-800">{edu.details}</p>}
 						</div>
-						<p class="entry-dates">
+						<p class="m-0 text-sm font-medium whitespace-nowrap text-accent print:text-black">
 							{edu.startDate} – {edu.endDate}
 						</p>
 					</div>
@@ -31,55 +31,3 @@ const { education } = Astro.props;
 		}
 	</ul>
 </Section>
-
-<style>
-	.entry-list {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		flex-direction: column;
-		gap: 1.25rem;
-	}
-
-	.entry-header {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-	}
-
-	.entry-title {
-		margin: 0;
-		font-size: 1.0625rem;
-		font-weight: 600;
-		color: var(--color-text);
-	}
-
-	.entry-subtitle {
-		margin: 0.125rem 0 0;
-		font-size: 0.875rem;
-		color: var(--color-text-muted);
-	}
-
-	.entry-details {
-		margin: 0.375rem 0 0;
-		font-size: 0.875rem;
-		color: var(--color-text);
-	}
-
-	.entry-dates {
-		margin: 0;
-		font-size: 0.875rem;
-		font-weight: 500;
-		color: var(--color-accent);
-		white-space: nowrap;
-	}
-
-	@media (min-width: 640px) {
-		.entry-header {
-			flex-direction: row;
-			justify-content: space-between;
-			align-items: flex-start;
-		}
-	}
-</style>

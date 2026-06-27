@@ -10,24 +10,29 @@ const { experience } = Astro.props;
 ---
 
 <Section title="Experience">
-	<ul class="entry-list">
+	<ul class="m-0 flex list-none flex-col gap-6 p-0">
 		{
-			experience.map((job) => (
-				<li class="entry">
-					<div class="entry-header">
+			experience.map((job, index) => (
+				<li
+					class:list={[
+						'pb-6',
+						index < experience.length - 1 && 'border-b border-slate-200',
+					]}
+				>
+					<div class="mb-3 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
 						<div>
-							<h3 class="entry-title">{job.role}</h3>
-							<p class="entry-subtitle">
+							<h3 class="m-0 text-[1.0625rem] font-semibold text-slate-800">{job.role}</h3>
+							<p class="mt-0.5 text-sm text-slate-500">
 								{job.company} · {job.location}
 							</p>
 						</div>
-						<p class="entry-dates">
+						<p class="m-0 text-sm font-medium whitespace-nowrap text-accent print:text-black">
 							{job.startDate} – {job.endDate}
 						</p>
 					</div>
-					<ul class="highlights">
+					<ul class="m-0 flex list-disc flex-col gap-1.5 pl-5">
 						{job.highlights.map((highlight) => (
-							<li>{highlight}</li>
+							<li class="text-[0.9375rem] leading-relaxed text-slate-800">{highlight}</li>
 						))}
 					</ul>
 				</li>
@@ -35,74 +40,3 @@ const { experience } = Astro.props;
 		}
 	</ul>
 </Section>
-
-<style>
-	.entry-list {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	.entry {
-		padding-bottom: 1.5rem;
-		border-bottom: 1px solid var(--color-border);
-	}
-
-	.entry:last-child {
-		padding-bottom: 0;
-		border-bottom: none;
-	}
-
-	.entry-header {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-		margin-bottom: 0.75rem;
-	}
-
-	.entry-title {
-		margin: 0;
-		font-size: 1.0625rem;
-		font-weight: 600;
-		color: var(--color-text);
-	}
-
-	.entry-subtitle {
-		margin: 0.125rem 0 0;
-		font-size: 0.875rem;
-		color: var(--color-text-muted);
-	}
-
-	.entry-dates {
-		margin: 0;
-		font-size: 0.875rem;
-		font-weight: 500;
-		color: var(--color-accent);
-		white-space: nowrap;
-	}
-
-	.highlights {
-		margin: 0;
-		padding-left: 1.25rem;
-		display: flex;
-		flex-direction: column;
-		gap: 0.375rem;
-	}
-
-	.highlights li {
-		font-size: 0.9375rem;
-		line-height: 1.6;
-		color: var(--color-text);
-	}
-
-	@media (min-width: 640px) {
-		.entry-header {
-			flex-direction: row;
-			justify-content: space-between;
-			align-items: flex-start;
-		}
-	}
-</style>

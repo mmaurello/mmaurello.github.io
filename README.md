@@ -1,6 +1,6 @@
 # Resume — mmaurello.github.io
 
-A data-driven resume site built with [Astro](https://astro.build) and deployed to GitHub Pages.
+A data-driven resume site built with [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com), and deployed to GitHub Pages.
 
 ## Local development
 
