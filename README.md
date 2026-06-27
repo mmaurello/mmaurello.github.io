@@ -36,11 +36,15 @@ The contact form uses [Web3Forms](https://web3forms.com) to deliver messages to 
    # edit PUBLIC_WEB3FORMS_ACCESS_KEY in .env
    ```
 
-4. For production (GitHub Pages), add a repository secret:
+4. In the [Web3Forms dashboard](https://app.web3forms.com), open your form and set **Block Spam** to **hCaptcha**.
+
+5. For production (GitHub Pages), add a repository secret:
    - Repo → **Settings → Secrets and variables → Actions**
    - New secret: `WEB3FORMS_ACCESS_KEY` = your Web3Forms access key
 
 The deploy workflow passes this secret into the build as `PUBLIC_WEB3FORMS_ACCESS_KEY`.
+
+The contact form uses Web3Forms' built-in hCaptcha (no separate hCaptcha account needed on the free plan).
 
 ## Build
 
