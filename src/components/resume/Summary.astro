@@ -1,0 +1,13 @@
+---
+import Section from './Section.astro';
+
+interface Props {
+	summary: string;
+}
+
+const { summary } = Astro.props;
+---
+
+<Section title="Summary">
+	<p class="m-0 text-base leading-relaxed text-slate-800">{summary}</p>
+</Section>

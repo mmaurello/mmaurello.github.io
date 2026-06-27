@@ -1,0 +1,23 @@
+---
+import type { Language } from '../../data/resume';
+import Section from './Section.astro';
+
+interface Props {
+	languages: Language[];
+}
+
+const { languages } = Astro.props;
+---
+
+<Section title="Languages">
+	<div class="flex flex-wrap gap-3">
+		{
+			languages.map((lang) => (
+				<div class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2 print:border-gray-300 print:bg-transparent">
+					<span class="text-[0.9375rem] font-semibold text-slate-800">{lang.name}</span>
+					<span class="text-xs text-slate-500 before:mr-2 before:content-['·']">{lang.level}</span>
+				</div>
+			))
+		}
+	</div>
+</Section>

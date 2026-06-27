@@ -1,0 +1,31 @@
+---
+import type { SkillGroup } from '../../data/resume';
+import Section from './Section.astro';
+
+interface Props {
+	skills: SkillGroup[];
+}
+
+const { skills } = Astro.props;
+---
+
+<Section title="Skills">
+	<div class="flex flex-col gap-5">
+		{
+			skills.map((group) => (
+				<div>
+					<h3 class="mb-2 text-xs font-semibold tracking-wider text-slate-500 uppercase">
+						{group.category}
+					</h3>
+					<div class="flex flex-wrap gap-1.5">
+						{group.items.map((item) => (
+							<span class="inline-block rounded-md bg-accent-light px-2.5 py-1 text-xs font-medium text-accent print:border print:border-gray-300 print:bg-transparent print:text-black">
+								{item}
+							</span>
+						))}
+					</div>
+				</div>
+			))
+		}
+	</div>
+</Section>

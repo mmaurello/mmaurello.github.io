@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/resume/Header.astro';
+import Summary from '../components/resume/Summary.astro';
+import Experience from '../components/resume/Experience.astro';
+import Education from '../components/resume/Education.astro';
+import Skills from '../components/resume/Skills.astro';
+import Certifications from '../components/resume/Certifications.astro';
+import Languages from '../components/resume/Languages.astro';
+import { resume } from '../data/resume';
+
+const { header, summary, experience, education, skills, certifications, languages } = resume;
+---
+
+<Layout title={`${header.name} — Resume`}>
+	<Header header={header} />
+	<Summary summary={summary} />
+	<Experience experience={experience} />
+	<Education education={education} />
+	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+		<Skills skills={skills} />
+		<Certifications certifications={certifications} />
+	</div>
+	<Languages languages={languages} />
+</Layout>

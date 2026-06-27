@@ -1,0 +1,33 @@
+---
+import type { EducationEntry } from '../../data/resume';
+import Section from './Section.astro';
+
+interface Props {
+	education: EducationEntry[];
+}
+
+const { education } = Astro.props;
+---
+
+<Section title="Education">
+	<ul class="m-0 flex list-none flex-col gap-5 p-0">
+		{
+			education.map((edu) => (
+				<li>
+					<div class="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+						<div>
+							<h3 class="m-0 text-[1.0625rem] font-semibold text-slate-800">{edu.degree}</h3>
+							<p class="mt-0.5 text-sm text-slate-500">
+								{edu.institution} · {edu.location}
+							</p>
+							{edu.details && <p class="mt-1.5 text-sm text-slate-800">{edu.details}</p>}
+						</div>
+						<p class="m-0 text-sm font-medium whitespace-nowrap text-accent print:text-black">
+							{edu.startDate} – {edu.endDate}
+						</p>
+					</div>
+				</li>
+			))
+		}
+	</ul>
+</Section>
