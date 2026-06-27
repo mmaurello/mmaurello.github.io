@@ -7,8 +7,6 @@ export interface Header {
 	name: string;
 	title: string;
 	location: string;
-	email: string;
-	phone: string;
 	links: ContactLink[];
 }
 
@@ -62,8 +60,6 @@ export const resume: Resume = {
 		name: 'Lorem Ipsum',
 		title: 'Dolor Sit Amet',
 		location: 'Consectetur, Adipiscing',
-		email: 'lorem.ipsum@example.com',
-		phone: '+0 (000) 000-0000',
 		links: [
 			{ label: 'Lorem', url: 'https://example.com/lorem' },
 			{ label: 'Ipsum', url: 'https://example.com/ipsum' },
