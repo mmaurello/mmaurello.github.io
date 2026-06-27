@@ -1,0 +1,22 @@
+---
+import Section from './Section.astro';
+
+interface Props {
+	summary: string;
+}
+
+const { summary } = Astro.props;
+---
+
+<Section title="Summary">
+	<p class="summary-text">{summary}</p>
+</Section>
+
+<style>
+	.summary-text {
+		margin: 0;
+		font-size: 1rem;
+		line-height: 1.7;
+		color: var(--color-text);
+	}
+</style>

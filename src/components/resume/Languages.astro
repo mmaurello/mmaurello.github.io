@@ -1,0 +1,57 @@
+---
+import type { Language } from '../../data/resume';
+import Section from './Section.astro';
+
+interface Props {
+	languages: Language[];
+}
+
+const { languages } = Astro.props;
+---
+
+<Section title="Languages">
+	<div class="language-list">
+		{
+			languages.map((lang) => (
+				<div class="language-item">
+					<span class="language-name">{lang.name}</span>
+					<span class="language-level">{lang.level}</span>
+				</div>
+			))
+		}
+	</div>
+</Section>
+
+<style>
+	.language-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.language-item {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 0.875rem;
+		background: var(--color-surface-alt);
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+	}
+
+	.language-name {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-text);
+	}
+
+	.language-level {
+		font-size: 0.8125rem;
+		color: var(--color-text-muted);
+	}
+
+	.language-level::before {
+		content: '·';
+		margin-right: 0.5rem;
+	}
+</style>

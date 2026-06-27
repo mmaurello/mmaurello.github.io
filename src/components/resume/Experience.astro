@@ -1,0 +1,108 @@
+---
+import type { ExperienceEntry } from '../../data/resume';
+import Section from './Section.astro';
+
+interface Props {
+	experience: ExperienceEntry[];
+}
+
+const { experience } = Astro.props;
+---
+
+<Section title="Experience">
+	<ul class="entry-list">
+		{
+			experience.map((job) => (
+				<li class="entry">
+					<div class="entry-header">
+						<div>
+							<h3 class="entry-title">{job.role}</h3>
+							<p class="entry-subtitle">
+								{job.company} · {job.location}
+							</p>
+						</div>
+						<p class="entry-dates">
+							{job.startDate} – {job.endDate}
+						</p>
+					</div>
+					<ul class="highlights">
+						{job.highlights.map((highlight) => (
+							<li>{highlight}</li>
+						))}
+					</ul>
+				</li>
+			))
+		}
+	</ul>
+</Section>
+
+<style>
+	.entry-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.entry {
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.entry:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.entry-header {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.entry-title {
+		margin: 0;
+		font-size: 1.0625rem;
+		font-weight: 600;
+		color: var(--color-text);
+	}
+
+	.entry-subtitle {
+		margin: 0.125rem 0 0;
+		font-size: 0.875rem;
+		color: var(--color-text-muted);
+	}
+
+	.entry-dates {
+		margin: 0;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-accent);
+		white-space: nowrap;
+	}
+
+	.highlights {
+		margin: 0;
+		padding-left: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.375rem;
+	}
+
+	.highlights li {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+		color: var(--color-text);
+	}
+
+	@media (min-width: 640px) {
+		.entry-header {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+	}
+</style>

@@ -1,46 +1,38 @@
-# Astro Starter Kit: Basics
+# Resume — mmaurello.github.io
+
+A data-driven resume site built with [Astro](https://astro.build) and deployed to GitHub Pages.
+
+## Local development
 
 ```sh
-pnpm create astro@latest -- --template basics
+pnpm install
+pnpm dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Open [http://localhost:4321](http://localhost:4321) to preview the site.
 
-## 🚀 Project Structure
+## Editing your resume
 
-Inside of your Astro project, you'll see the following folders and files:
+All resume content lives in a single file:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```
+src/data/resume.ts
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Update your name, experience, skills, and other sections there. No component changes are needed for content updates.
 
-## 🧞 Commands
+## Build
 
-All commands are run from the root of the project, from a terminal:
+```sh
+pnpm build
+pnpm preview   # preview the production build locally
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## Deploy to GitHub Pages
 
-## 👀 Want to learn more?
+1. Merge changes to the `main` branch.
+2. In your GitHub repo, go to **Settings → Pages**.
+3. Set **Source** to **GitHub Actions**.
+4. Push to `main` — the workflow in `.github/workflows/deploy.yml` builds and deploys automatically.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The site will be published at [https://mmaurello.github.io](https://mmaurello.github.io).
