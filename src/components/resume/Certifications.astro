@@ -1,18 +1,17 @@
 ---
-import type { Certification } from '../../data/resume';
-import Section from './Section.astro';
+import type { Certification } from "../../data/resume";
+import Section from "./Section.astro";
 
 interface Props {
-	certifications: Certification[];
+  certifications: Certification[];
 }
 
 const { certifications } = Astro.props;
 ---
 
 <Section title="Certifications">
-	<ul class="m-0 flex list-none flex-col gap-3.5 p-0">
-		{
-			certifications.map((cert) => (
+  <ul class="m-0 flex list-none flex-col gap-3.5 p-0">
+    {certifications.map((cert) => (
 				<li>
 					<a
 						href={cert.url}
@@ -28,7 +27,6 @@ const { certifications } = Astro.props;
 						</span>
 					</a>
 				</li>
-			))
-		}
-	</ul>
+			))}
+  </ul>
 </Section>

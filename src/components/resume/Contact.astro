@@ -1,21 +1,21 @@
 ---
-import Section from './Section.astro';
+import Section from "./Section.astro";
 
-const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 const isConfigured = accessKey.length > 0;
 
 const inputClass =
-	'w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent-light focus:outline-none';
-const labelClass = 'mb-1 block text-xs font-semibold tracking-wide text-slate-600 uppercase';
+  "w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent-light focus:outline-none";
+const labelClass =
+  "mb-1 block text-xs font-semibold tracking-wide text-slate-600 uppercase";
 ---
 
 <Section title="Contact" id="contact" class="print:hidden">
-	<p class="mb-4 text-[0.9375rem] leading-relaxed text-slate-600">
-		Interested in working together? Send a message and I'll get back to you.
-	</p>
+  <p class="mb-4 text-[0.9375rem] leading-relaxed text-slate-600">
+    Interested in working together? Send a message and I'll get back to you.
+  </p>
 
-	{
-		isConfigured ? (
+  {isConfigured ? (
 			<form id="contact-form" class="flex flex-col gap-4" novalidate>
 				<input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
 
@@ -82,12 +82,10 @@ const labelClass = 'mb-1 block text-xs font-semibold tracking-wide text-slate-60
 				<code class="rounded bg-amber-100 px-1 py-0.5 text-xs">PUBLIC_WEB3FORMS_ACCESS_KEY</code> in{' '}
 				<code class="rounded bg-amber-100 px-1 py-0.5 text-xs">.env</code> (see README).
 			</p>
-		)
-	}
+		)}
 </Section>
 
-{
-	isConfigured && (
+{isConfigured && (
 		<>
 			<script src="https://web3forms.com/client/script.js" async defer />
 			<script define:vars={{ accessKey }}>
@@ -169,5 +167,4 @@ const labelClass = 'mb-1 block text-xs font-semibold tracking-wide text-slate-60
 				}
 			</script>
 		</>
-	)
-}
+	)}

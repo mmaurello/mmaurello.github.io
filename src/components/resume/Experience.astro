@@ -1,18 +1,17 @@
 ---
-import type { ExperienceEntry } from '../../data/resume';
-import Section from './Section.astro';
+import type { ExperienceEntry } from "../../data/resume";
+import Section from "./Section.astro";
 
 interface Props {
-	experience: ExperienceEntry[];
+  experience: ExperienceEntry[];
 }
 
 const { experience } = Astro.props;
 ---
 
 <Section title="Experience">
-	<ul class="m-0 flex list-none flex-col gap-6 p-0">
-		{
-			experience.map((job, index) => (
+  <ul class="m-0 flex list-none flex-col gap-6 p-0">
+    {experience.map((job, index) => (
 				<li
 					class:list={[
 						'pb-6',
@@ -36,7 +35,6 @@ const { experience } = Astro.props;
 						))}
 					</ul>
 				</li>
-			))
-		}
-	</ul>
+			))}
+  </ul>
 </Section>

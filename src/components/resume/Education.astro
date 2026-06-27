@@ -1,18 +1,17 @@
 ---
-import type { EducationEntry } from '../../data/resume';
-import Section from './Section.astro';
+import type { EducationEntry } from "../../data/resume";
+import Section from "./Section.astro";
 
 interface Props {
-	education: EducationEntry[];
+  education: EducationEntry[];
 }
 
 const { education } = Astro.props;
 ---
 
 <Section title="Education">
-	<ul class="m-0 flex list-none flex-col gap-5 p-0">
-		{
-			education.map((edu) => (
+  <ul class="m-0 flex list-none flex-col gap-5 p-0">
+    {education.map((edu) => (
 				<li>
 					<div class="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
 						<div>
@@ -27,7 +26,6 @@ const { education } = Astro.props;
 						</p>
 					</div>
 				</li>
-			))
-		}
-	</ul>
+			))}
+  </ul>
 </Section>
