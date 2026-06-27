@@ -1,26 +1,30 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
-	title?: string;
+  title?: string;
 }
 
-const { title = 'Resume' } = Astro.props;
+const { title = "Resume" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="min-h-full bg-slate-100 font-sans text-base leading-normal text-slate-800 antialiased print:bg-white print:text-black">
-		<main class="mx-auto flex max-w-3xl flex-col gap-4 px-4 py-6 pb-12 sm:gap-5 sm:px-6 sm:py-10 sm:pb-16 print:max-w-none print:p-0">
-			<slot />
-		</main>
-	</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="generator" content={Astro.generator}>
+    <title>{title}</title>
+  </head>
+  <body
+    class="min-h-full bg-slate-100 font-sans text-base leading-normal text-slate-800 antialiased print:bg-white print:text-black"
+  >
+    <main
+      class="mx-auto flex max-w-3xl flex-col gap-4 px-4 py-6 pb-12 sm:gap-5 sm:px-6 sm:py-10 sm:pb-16 print:max-w-none print:p-0"
+    >
+      <slot />
+    </main>
+  </body>
 </html>

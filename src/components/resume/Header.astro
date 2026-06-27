@@ -1,32 +1,36 @@
 ---
-import type { Header } from '../../data/resume';
+import type { Header } from "../../data/resume";
 
 interface Props {
-	header: Header;
+  header: Header;
 }
 
 const { header } = Astro.props;
 
 const chipBase =
-	'inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-800 no-underline transition-colors hover:border-accent hover:text-accent print:border-gray-300 print:bg-transparent print:text-black print:no-underline';
+  "inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-800 no-underline transition-colors hover:border-accent hover:text-accent print:border-gray-300 print:bg-transparent print:text-black print:no-underline";
 const chipAccent =
-	'inline-flex items-center rounded-full border border-transparent bg-accent-light px-3 py-1.5 text-xs font-medium text-accent no-underline transition-colors hover:bg-accent hover:text-white print:border-gray-300 print:bg-transparent print:text-black print:no-underline';
+  "inline-flex items-center rounded-full border border-transparent bg-accent-light px-3 py-1.5 text-xs font-medium text-accent no-underline transition-colors hover:bg-accent hover:text-white print:border-gray-300 print:bg-transparent print:text-black print:no-underline";
 ---
 
-<header class="flex flex-col gap-5 rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:flex-row sm:items-start sm:justify-between sm:p-7 print:border-gray-300 print:shadow-none print:break-inside-avoid">
-	<div>
-		<h1 class="m-0 text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">{header.name}</h1>
-		<p class="mt-1 text-lg font-medium text-accent print:text-black">{header.title}</p>
-		<p class="mt-1.5 text-[0.9375rem] text-slate-500">{header.location}</p>
-	</div>
-	<div class="flex flex-wrap gap-2 sm:max-w-80 sm:justify-end">
-		<a href="#contact" class={chipBase}>Contact</a>
-		{
-			header.links.map((link) => (
+<header
+  class="flex flex-col gap-5 rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:flex-row sm:items-start sm:justify-between sm:p-7 print:border-gray-300 print:shadow-none print:break-inside-avoid"
+>
+  <div>
+    <h1 class="m-0 text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">
+      {header.name}
+    </h1>
+    <p class="mt-1 text-lg font-medium text-accent print:text-black">
+      {header.title}
+    </p>
+    <p class="mt-1.5 text-[0.9375rem] text-slate-500">{header.location}</p>
+  </div>
+  <div class="flex flex-wrap gap-2 sm:max-w-80 sm:justify-end">
+    <a href="#contact" class={chipBase}>Contact</a>
+    {header.links.map((link) => (
 				<a href={link.url} class={chipAccent} target="_blank" rel="noopener noreferrer">
 					{link.label}
 				</a>
-			))
-		}
-	</div>
+			))}
+  </div>
 </header>
