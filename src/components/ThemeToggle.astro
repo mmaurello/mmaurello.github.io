@@ -75,6 +75,18 @@ function applyTheme(theme) {
   }
 }
 
+function applyThemeWithTransition(theme) {
+  const update = () => applyTheme(theme);
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduceMotion || !document.startViewTransition) {
+    update();
+    return;
+  }
+
+  document.startViewTransition(update);
+}
+
 applyTheme(getPreferredTheme());
 
 const toggle = document.getElementById("theme-toggle");
@@ -83,8 +95,12 @@ if (toggle instanceof HTMLButtonElement) {
     const nextTheme = document.documentElement.classList.contains("dark")
       ? "light"
       : "dark";
-    localStorage.setItem(STORAGE_KEY, nextTheme);
-    applyTheme(nextTheme);
+    try {
+      localStorage.setItem(STORAGE_KEY, nextTheme);
+    } catch {
+      /* storage unavailable — theme still applies for this session */
+    }
+    applyThemeWithTransition(nextTheme);
   });
 }
 </script>
