@@ -3,12 +3,22 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-accent: #4f46e5;
-  --color-accent-light: #eef2ff;
+  --color-accent: #881337;
+  --color-accent-light: #fff1f2;
+  --color-accent-muted: #fda4af;
+  --color-accent-hover: #701a2e;
+  --color-surface: #f1f5f9;
+  --color-surface-raised: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-border: #e2e8f0;
 }
 
 .dark {
-  --color-accent-light: #1e1b4b;
+  --color-accent-light: #4c0519;
+  --color-surface: #130e10;
+  --color-surface-raised: #1e171a;
+  --color-surface-muted: #2a2226;
+  --color-border: #3d3036;
 }
 
 ::view-transition-old(root),

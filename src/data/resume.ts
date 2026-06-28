@@ -118,7 +118,7 @@ export const resume: Resume = {
   skills: [
     {
       category: "Lorem",
-      items: ["Ipsum", "Dolor", "Sit", "Amet", "Consectetur"],
+      items: ["Ipsum", "Dolor", "Sit", "Amet", "asdasd"],
     },
     {
       category: "Adipiscing",
