@@ -1,0 +1,106 @@
+<button
+  type="button"
+  id="theme-toggle"
+  class="fixed top-4 right-4 z-50 inline-flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent dark:border-border dark:bg-surface-raised dark:text-stone-300 dark:hover:border-accent dark:hover:text-accent-muted print:hidden"
+  aria-label="Switch to dark mode"
+  aria-pressed="false"
+>
+  <svg
+    id="theme-icon-light"
+    class="size-5"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2"></path>
+    <path d="M12 20v2"></path>
+    <path d="m4.93 4.93 1.41 1.41"></path>
+    <path d="m17.66 17.66 1.41 1.41"></path>
+    <path d="M2 12h2"></path>
+    <path d="M20 12h2"></path>
+    <path d="m6.34 17.66-1.41 1.41"></path>
+    <path d="m19.07 4.93-1.41 1.41"></path>
+  </svg>
+  <svg
+    id="theme-icon-dark"
+    class="hidden size-5"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+  </svg>
+</button>
+
+<script>
+const STORAGE_KEY = "theme";
+
+function getPreferredTheme() {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (stored === "light" || stored === "dark") {
+    return stored;
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function applyTheme(theme) {
+  const isDark = theme === "dark";
+  document.documentElement.classList.toggle("dark", isDark);
+
+  const toggle = document.getElementById("theme-toggle");
+  const lightIcon = document.getElementById("theme-icon-light");
+  const darkIcon = document.getElementById("theme-icon-dark");
+
+  if (toggle instanceof HTMLButtonElement) {
+    toggle.setAttribute(
+      "aria-label",
+      isDark ? "Switch to light mode" : "Switch to dark mode",
+    );
+    toggle.setAttribute("aria-pressed", String(isDark));
+  }
+  if (lightIcon instanceof SVGElement && darkIcon instanceof SVGElement) {
+    lightIcon.classList.toggle("hidden", isDark);
+    darkIcon.classList.toggle("hidden", !isDark);
+  }
+}
+
+function applyThemeWithTransition(theme) {
+  const update = () => applyTheme(theme);
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduceMotion || !document.startViewTransition) {
+    update();
+    return;
+  }
+
+  document.startViewTransition(update);
+}
+
+applyTheme(getPreferredTheme());
+
+const toggle = document.getElementById("theme-toggle");
+if (toggle instanceof HTMLButtonElement) {
+  toggle.addEventListener("click", () => {
+    const nextTheme = document.documentElement.classList.contains("dark")
+      ? "light"
+      : "dark";
+    try {
+      localStorage.setItem(STORAGE_KEY, nextTheme);
+    } catch {
+      /* storage unavailable — theme still applies for this session */
+    }
+    applyThemeWithTransition(nextTheme);
+  });
+}
+</script>

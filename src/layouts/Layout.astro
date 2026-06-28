@@ -1,4 +1,5 @@
 ---
+import ThemeToggle from "../components/ThemeToggle.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -17,10 +18,20 @@ const { title = "Resume" } = Astro.props;
     <link rel="icon" href="/favicon.ico">
     <meta name="generator" content={Astro.generator}>
     <title>{title}</title>
+    <script is:inline>
+    (() => {
+      var stored = localStorage.getItem("theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (stored === "dark" || (!stored && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+    </script>
   </head>
   <body
-    class="min-h-full bg-slate-100 font-sans text-base leading-normal text-slate-800 antialiased print:bg-white print:text-black"
+    class="min-h-full bg-slate-100 font-sans text-base leading-normal text-slate-800 antialiased dark:bg-surface dark:text-stone-100 print:bg-white print:text-black"
   >
+    <ThemeToggle />
     <main
       class="mx-auto flex max-w-3xl flex-col gap-4 px-4 py-6 pb-12 sm:gap-5 sm:px-6 sm:py-10 sm:pb-16 print:max-w-none print:p-0"
     >
