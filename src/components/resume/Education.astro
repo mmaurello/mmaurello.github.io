@@ -15,11 +15,11 @@ const { education } = Astro.props;
 				<li>
 					<div class="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
 						<div>
-							<h3 class="m-0 text-[1.0625rem] font-semibold text-slate-800">{edu.degree}</h3>
-							<p class="mt-0.5 text-sm text-slate-500">
+							<h3 class="m-0 text-[1.0625rem] font-semibold text-slate-800 dark:text-slate-100">{edu.degree}</h3>
+							<p class="mt-0.5 text-sm text-slate-500 dark:text-slate-400">
 								{edu.institution} · {edu.location}
 							</p>
-							{edu.details && <p class="mt-1.5 text-sm text-slate-800">{edu.details}</p>}
+							{edu.details && <p class="mt-1.5 text-sm text-slate-800 dark:text-slate-200">{edu.details}</p>}
 						</div>
 						<p class="m-0 text-sm font-medium whitespace-nowrap text-accent print:text-black">
 							{edu.startDate} – {edu.endDate}

@@ -5,13 +5,13 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 const isConfigured = accessKey.length > 0;
 
 const inputClass =
-  "w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent-light focus:outline-none";
+  "w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent-light focus:outline-none dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500";
 const labelClass =
-  "mb-1 block text-xs font-semibold tracking-wide text-slate-600 uppercase";
+  "mb-1 block text-xs font-semibold tracking-wide text-slate-600 uppercase dark:text-slate-400";
 ---
 
 <Section title="Contact" id="contact" class="print:hidden">
-  <p class="mb-4 text-[0.9375rem] leading-relaxed text-slate-600">
+  <p class="mb-4 text-[0.9375rem] leading-relaxed text-slate-600 dark:text-slate-400">
     Interested in working together? Send a message and I'll get back to you.
   </p>
 
@@ -73,14 +73,14 @@ const labelClass =
 					>
 						Send message
 					</button>
-					<p id="contact-status" class="text-sm text-slate-500" role="status" aria-live="polite" />
+					<p id="contact-status" class="text-sm text-slate-500 dark:text-slate-400" role="status" aria-live="polite" />
 				</div>
 			</form>
 		) : (
-			<p class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+			<p class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200">
 				Contact form is not configured yet. Add your Web3Forms access key to{' '}
-				<code class="rounded bg-amber-100 px-1 py-0.5 text-xs">PUBLIC_WEB3FORMS_ACCESS_KEY</code> in{' '}
-				<code class="rounded bg-amber-100 px-1 py-0.5 text-xs">.env</code> (see README).
+				<code class="rounded bg-amber-100 px-1 py-0.5 text-xs dark:bg-amber-900">PUBLIC_WEB3FORMS_ACCESS_KEY</code> in{' '}
+				<code class="rounded bg-amber-100 px-1 py-0.5 text-xs dark:bg-amber-900">.env</code> (see README).
 			</p>
 		)}
 </Section>
@@ -116,7 +116,7 @@ const labelClass =
 						const captchaToken = getCaptchaToken(form);
 						if (!captchaToken) {
 							statusEl.textContent = 'Please complete the captcha.';
-							statusEl.className = 'text-sm font-medium text-red-700';
+							statusEl.className = 'text-sm font-medium text-red-700 dark:text-red-400';
 							return;
 						}
 
@@ -134,7 +134,7 @@ const labelClass =
 						submitBtn.disabled = true;
 						submitBtn.textContent = 'Sending…';
 						statusEl.textContent = '';
-						statusEl.className = 'text-sm text-slate-500';
+						statusEl.className = 'text-sm text-slate-500 dark:text-slate-400';
 
 						try {
 							const response = await fetch('https://api.web3forms.com/submit', {
@@ -149,16 +149,16 @@ const labelClass =
 								form.reset();
 								resetCaptcha();
 								statusEl.textContent = 'Message sent — thank you!';
-								statusEl.className = 'text-sm font-medium text-emerald-700';
+								statusEl.className = 'text-sm font-medium text-emerald-700 dark:text-emerald-400';
 							} else {
 								resetCaptcha();
 								statusEl.textContent = result.message ?? 'Something went wrong. Please try again.';
-								statusEl.className = 'text-sm font-medium text-red-700';
+								statusEl.className = 'text-sm font-medium text-red-700 dark:text-red-400';
 							}
 						} catch {
 							resetCaptcha();
 							statusEl.textContent = 'Network error. Please try again later.';
-							statusEl.className = 'text-sm font-medium text-red-700';
+							statusEl.className = 'text-sm font-medium text-red-700 dark:text-red-400';
 						} finally {
 							submitBtn.disabled = false;
 							submitBtn.textContent = 'Send message';
