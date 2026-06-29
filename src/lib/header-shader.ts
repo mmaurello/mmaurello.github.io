@@ -1,3 +1,6 @@
+/** Set to true to show and run the header WebGL shader. */
+export const HEADER_SHADER_ENABLED = false;
+
 const VERTEX_SHADER = `
   attribute vec2 a_position;
   void main() {
@@ -91,6 +94,8 @@ function createProgram(gl: WebGLRenderingContext) {
 }
 
 export function initHeaderShader(canvas: HTMLCanvasElement, header: HTMLElement) {
+  if (!HEADER_SHADER_ENABLED) return () => {};
+
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const gl = canvas.getContext("webgl", {
     alpha: true,

@@ -1,5 +1,6 @@
 ---
 import type { Header } from "../../data/resume";
+import { HEADER_SHADER_ENABLED } from "../../lib/header-shader";
 
 interface Props {
   header: Header;
@@ -23,7 +24,10 @@ const chipAccent =
   ></div>
   <canvas
     id="header-shader"
-    class="pointer-events-none absolute inset-0 z-[1] h-full w-full mix-blend-multiply dark:mix-blend-normal print:hidden"
+    class:list={[
+      "pointer-events-none absolute inset-0 z-[1] h-full w-full mix-blend-multiply dark:mix-blend-normal print:hidden",
+      !HEADER_SHADER_ENABLED && "hidden",
+    ]}
     aria-hidden="true"
   ></canvas>
   <div class="relative z-10">
@@ -50,11 +54,13 @@ const chipAccent =
 </header>
 
 <script>
-import { initHeaderShader } from "../../lib/header-shader";
+import { HEADER_SHADER_ENABLED, initHeaderShader } from "../../lib/header-shader";
 
 let cleanupShader: (() => void) | null = null;
 
 function setupHeaderShader() {
+  if (!HEADER_SHADER_ENABLED) return;
+
   const canvas = document.getElementById("header-shader");
   const header = document.getElementById("resume-header");
   if (!(canvas instanceof HTMLCanvasElement) || !(header instanceof HTMLElement)) {
