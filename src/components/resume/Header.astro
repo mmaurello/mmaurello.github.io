@@ -2,6 +2,7 @@
 import type { Header } from "../../data/resume";
 import { HEADER_SHADER_ENABLED } from "../../lib/header-shader";
 import HeaderAccent from "./HeaderAccent.astro";
+import HeaderIconTooltip from "./HeaderIconTooltip.astro";
 
 interface Props {
   header: Header;
@@ -9,24 +10,29 @@ interface Props {
 
 const { header } = Astro.props;
 
+function findLink(label: string) {
+  return header.links.find((link) => link.label.toLowerCase() === label.toLowerCase());
+}
+
+const linkedInLink = findLink("LinkedIn");
+const githubLink = findLink("GitHub");
+
 const chipBase =
   "inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-800 no-underline transition-colors hover:border-accent hover:text-accent dark:border-border dark:bg-surface-muted dark:text-stone-200 print:border-gray-300 print:bg-transparent print:text-black print:no-underline";
-const chipAccent =
-  "inline-flex items-center rounded-full border border-transparent bg-accent-light px-3 py-1.5 text-xs font-medium text-accent no-underline transition-colors hover:bg-accent hover:text-white dark:text-accent-muted print:border-gray-300 print:bg-transparent print:text-black print:no-underline";
 ---
 
 <header
   id="resume-header"
-  class="reveal relative isolate flex flex-col gap-5 overflow-hidden rounded-xl border border-slate-200 p-6 shadow-sm sm:flex-row sm:items-start sm:justify-between sm:p-7 dark:border-border print:translate-none print:opacity-100 print:transition-none print:border-gray-300 print:shadow-none print:break-inside-avoid"
+  class="reveal relative isolate flex flex-col gap-5 rounded-xl border border-slate-200 p-6 shadow-sm sm:flex-row sm:items-start sm:justify-between sm:p-7 dark:border-border print:translate-none print:opacity-100 print:transition-none print:border-gray-300 print:shadow-none print:break-inside-avoid"
 >
   <div
-    class="absolute inset-0 bg-white dark:bg-surface-raised print:bg-white"
+    class="absolute inset-0 overflow-hidden rounded-xl bg-white dark:bg-surface-raised print:bg-white"
     aria-hidden="true"
   ></div>
   <canvas
     id="header-shader"
     class:list={[
-      "pointer-events-none absolute inset-0 z-[1] h-full w-full mix-blend-multiply dark:mix-blend-normal print:hidden",
+      "pointer-events-none absolute inset-0 z-[1] h-full w-full overflow-hidden rounded-xl mix-blend-multiply dark:mix-blend-normal print:hidden",
       !HEADER_SHADER_ENABLED && "hidden",
     ]}
     aria-hidden="true"
@@ -41,17 +47,28 @@ const chipAccent =
     <p class="mt-1 text-lg font-medium text-accent print:text-black">
       {header.title}
     </p>
-    <p class="mt-1.5 text-[0.9375rem] text-slate-500 dark:text-stone-400">
-      {header.location}
-    </p>
   </div>
-  <div class="relative z-10 flex flex-wrap gap-2 sm:max-w-80 sm:justify-end">
+  <div class="relative z-10 flex flex-wrap items-center gap-2 sm:justify-end">
     <a href="#contact" class={chipBase}>Contact</a>
-    {header.links.map((link) => (
-				<a href={link.url} class={chipAccent} target="_blank" rel="noopener noreferrer">
-					{link.label}
-				</a>
-			))}
+    <HeaderIconTooltip
+      kind="location"
+      ariaLabel={`Location: ${header.location}`}
+      tooltip={header.location}
+    />
+    {linkedInLink && (
+      <HeaderIconTooltip
+        kind="linkedin"
+        href={linkedInLink.url}
+        ariaLabel="LinkedIn profile"
+      />
+    )}
+    {githubLink && (
+      <HeaderIconTooltip
+        kind="github"
+        href={githubLink.url}
+        ariaLabel="GitHub profile"
+      />
+    )}
   </div>
 </header>
 

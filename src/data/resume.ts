@@ -59,11 +59,10 @@ export const resume: Resume = {
   header: {
     name: "Lorem Ipsum",
     title: "Dolor Sit Amet",
-    location: "Consectetur, Adipiscing",
+    location: "Madrid, ESP",
     links: [
-      { label: "Lorem", url: "https://example.com/lorem" },
-      { label: "Ipsum", url: "https://example.com/ipsum" },
-      { label: "Dolor", url: "https://example.com/dolor" },
+      { label: "LinkedIn", url: "https://www.linkedin.com/in/your-profile" },
+      { label: "GitHub", url: "https://github.com/mmaurello" },
     ],
   },
   summary:
