@@ -21,9 +21,11 @@ const { education } = Astro.props;
 							</p>
 							{edu.details && <p class="mt-1.5 text-sm text-slate-800 dark:text-stone-200">{edu.details}</p>}
 						</div>
-						<p class="m-0 text-sm font-medium whitespace-nowrap text-accent print:text-black">
-							{edu.startDate} – {edu.endDate}
-						</p>
+						{(edu.startDate || edu.endDate) && (
+							<p class="m-0 text-sm font-medium whitespace-nowrap text-accent print:text-black">
+								{edu.startDate}{edu.startDate && edu.endDate ? " – " : ""}{edu.endDate}
+							</p>
+						)}
 					</div>
 				</li>
 			))}

@@ -43,15 +43,15 @@ const FRAGMENT_SHADER = `
   void main() {
     vec2 uv = gl_FragCoord.xy / u_resolution;
     vec2 warp = vec2(
-      fbm(uv * 1.8 + u_time * 0.018),
-      fbm(uv * 1.8 + vec2(4.2, 1.3) + u_time * 0.014)
+      fbm(uv * 2.0 + u_time * 0.058),
+      fbm(uv * 2.0 + vec2(4.2, 1.3) + u_time * 0.022)
     );
-    float field = fbm(uv * 2.2 + warp * 1.6 + u_time * 0.01);
+    float field = fbm(uv * 2.4 + warp * 8.0 + u_time * 0.016);
 
     if (u_dark < 0.5) {
       vec3 pale = vec3(1.0, 0.99, 0.995);
       vec3 mid = vec3(0.98, 0.91, 0.93);
-      vec3 deep = vec3(0.93, 0.78, 0.82);
+      vec3 deep = vec3(0.53, 0.08, 0.02);
       vec3 color = mix(mix(pale, mid, field), deep, field * field * 0.45);
       gl_FragColor = vec4(color, 1.0);
     } else {

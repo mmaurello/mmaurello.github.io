@@ -17,6 +17,7 @@ export interface ExperienceEntry {
   startDate: string;
   endDate: string;
   highlights: string[];
+  skills?: string[];
 }
 
 export interface EducationEntry {
@@ -31,13 +32,14 @@ export interface EducationEntry {
 export interface SkillGroup {
   category: string;
   items: string[];
+  variant?: "chips" | "list";
 }
 
 export interface Certification {
   name: string;
   issuer: string;
   year: string;
-  url: string;
+  url?: string;
 }
 
 export interface Language {
@@ -57,116 +59,230 @@ export interface Resume {
 
 export const resume: Resume = {
   header: {
-    name: "Lorem Ipsum",
-    title: "Dolor Sit Amet",
-    location: "Madrid, ESP",
+    name: "Mario Jose Maurello",
+    title: "Full-Stack Software Engineer",
+    location: "Madrid, Spain",
     links: [
-      { label: "LinkedIn", url: "https://www.linkedin.com/in/your-profile" },
+      { label: "LinkedIn", url: "https://www.linkedin.com/in/mariojmaurello" },
       { label: "GitHub", url: "https://github.com/mmaurello" },
     ],
   },
   summary:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "Full-Stack Engineer specializing in web applications, with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Currently focused on Web3 and dApps. Recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on implementation across frontend, on-chain integrations, CI/CD, and cloud infrastructure.",
   experience: [
     {
-      role: "Lorem Ipsum Dolor",
-      company: "Sit Amet Inc.",
-      location: "Consectetur, Elit",
-      startDate: "Lorem 0000",
-      endDate: "Ipsum Present",
+      role: "Software Engineer — Web3 Developer",
+      company: "Opslayer",
+      location: "Madrid · Remote",
+      startDate: "June 2023",
+      endDate: "Present",
       highlights: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+        "Owned development of both Polkadot/Substrate-based and EVM-based dApps, integrating Web3 wallets and on-chain data analytics.",
+        "Integrated and maintained dApps with Polkadot.js API for interacting with Substrate-based blockchains, enabling real-time querying of on-chain data and transaction signing.",
+        "Built bridging SDKs to facilitate seamless token transfers across EVM-compatible chains and Substrate chain, removing the complexity for users of interacting with smart contract and Substrate interfaces.",
+        "Implemented CI/CD pipelines with GitHub Actions, improving deployment reliability and reducing downtime.",
+        "Provided ongoing infrastructure support via AWS, achieving 99.9% service uptime.",
+      ],
+      skills: [
+        "React",
+        "TypeScript",
+        "Next.js",
+        "Polkadot.js",
+        "Wagmi",
+        "Ethers.js",
+        "Viem",
+        "Solidity",
+        "GitHub Actions",
+        "AWS",
       ],
     },
     {
-      role: "Sit Amet Consectetur",
-      company: "Adipiscing Labs",
-      location: "Elit, Sed",
-      startDate: "Dolor 0000",
-      endDate: "Amet 0000",
+      role: "Software Engineer",
+      company: "Purestake",
+      location: "Madrid · Remote",
+      startDate: "October 2021",
+      endDate: "June 2023",
       highlights: [
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-        "Deserunt mollit anim id est laborum sed ut perspiciatis unde omnis iste.",
-        "Natus error sit voluptatem accusantium doloremque laudantium totam rem.",
+        "Developed and maintained decentralized applications (dApps) using React, Ethers.js, Viem, Wagmi, and interactions with Solidity contracts.",
+        "Designed and maintained SDKs for blockchain bridging, resulting in improved developer integration in the Polkadot ecosystem.",
+        "Migrated web apps infrastructure to AWS server-less services, reducing deployment times and complexity.",
+      ],
+      skills: ["React", "TypeScript", "Ethers.js", "Viem", "Wagmi", "Solidity", "AWS"],
+    },
+    {
+      role: "Full Stack Developer",
+      company: "Digimobil",
+      location: "Madrid",
+      startDate: "April 2021",
+      endDate: "October 2021",
+      highlights: [
+        "Developed internal logistics management web application to track and optimize inventory movement, reducing manual workload by 50%.",
+        "Built RESTful APIs in PHP (Symfony), interfacing with SQL Server for real-time data tracking.",
+        "Improved application security by implementing user authentication and role-based access control.",
+      ],
+      skills: ["PHP", "Symfony", "SQL Server", "REST APIs"],
+    },
+    {
+      role: "Project Manager",
+      company: "Imaweb",
+      location: "Madrid",
+      startDate: "December 2019",
+      endDate: "March 2021",
+      highlights: [
+        "Managed a cross-functional team of 4 developers and 2 QA testers in the agile development of CRM solutions for automotive clients.",
+        "Delivered 20+ project releases on time and within budget, improving customer satisfaction scores by 25%.",
+        "Acted as primary liaison between clients and technical teams, translating business needs into functional requirements.",
+        "Introduced sprint retrospectives and kanban boards, leading to a 15% productivity increase.",
       ],
     },
     {
-      role: "Adipiscing Elit Sed",
-      company: "Tempor Agency",
-      location: "Incididunt, Labore",
-      startDate: "Ut 0000",
-      endDate: "Enim 0000",
+      role: "Project Leader",
+      company: "Imaweb",
+      location: "Madrid",
+      startDate: "July 2019",
+      endDate: "December 2019",
       highlights: [
-        "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse.",
-        "Quam nihil molestiae consequatur vel illum qui dolorem eum fugiat quo.",
+        "Supervised development of custom modules for automotive CRMs, reducing feature request backlog.",
+        "Mentored junior developer and QA tester, resulting in quicker onboarding and quality improvements.",
+        "Ensured adherence to deadlines and code quality standards during high-priority client rollouts.",
       ],
+      skills: ["PHP", "MySQL", "Agile", "Jira"],
     },
     {
-      role: "22323 Elit Sed",
-      company: "Tempor Agency",
-      location: "Incididunt, Labore",
-      startDate: "Ut 0000",
-      endDate: "Enim 0000",
+      role: "Full Stack Developer",
+      company: "Imaweb",
+      location: "Madrid",
+      startDate: "August 2018",
+      endDate: "July 2019",
       highlights: [
-        "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse.",
-        "Quam nihil molestiae consequatur vel illum qui dolorem eum fugiat quo.",
+        "Built core modules for a CRM platform used by over 500 car dealerships across Europe.",
+        "Integrated third-party systems using REST/SOAP APIs, enhancing data flow across platforms.",
+        "Wrote backend services in PHP, managing relational data in MySQL and performance tuning SQL queries.",
       ],
+      skills: ["PHP", "MySQL", "REST APIs", "SOAP"],
     },
     {
-      role: "addd Elit Sed",
-      company: "Tempor Agency",
-      location: "Incididunt, Labore",
-      startDate: "Ut 0000",
-      endDate: "Enim 0000",
+      role: "SQA Developer",
+      company: "Imaweb",
+      location: "Madrid",
+      startDate: "August 2018",
+      endDate: "July 2019",
       highlights: [
-        "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse.",
-        "Quam nihil molestiae consequatur vel illum qui dolorem eum fugiat quo.",
+        "Refactored legacy PHP code and optimized MySQL queries, reducing page load times by up to 60%.",
+        "Collaborated with development teams to triage and resolve bugs reported from production.",
+      ],
+      skills: ["PHP", "MySQL"],
+    },
+    {
+      role: "Natural ADABAS Junior Programmer",
+      company: "Software AG",
+      location: "Madrid",
+      startDate: "June 2016",
+      endDate: "February 2017",
+      highlights: [
+        "Developed mainframe applications using Natural and managed data in Adabas, for Madrid's water supply company.",
+        "Documented legacy system workflows and contributed to early-stage migration planning to modern platforms.",
+      ],
+      skills: ["Natural", "ADABAS"],
+    },
+    {
+      role: "Maintenance Engineer",
+      company: "Empresas Polar",
+      location: "Caracas",
+      startDate: "May 2014",
+      endDate: "February 2015",
+      highlights: [
+        "Led a team of 4 interns in executing preventive maintenance plans for an ice cream production plant.",
+        "Reduced machinery downtime by 15% through optimization of maintenance schedules and troubleshooting protocols.",
+        "Prepared daily reports for upper management on productivity and maintenance KPIs.",
       ],
     },
   ],
   education: [
     {
-      degree: "Lorem Ipsum Degree",
-      institution: "Dolor Sit University",
-      location: "Amet, Consectetur",
-      startDate: "0000",
-      endDate: "0000",
-      details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      degree: "Diploma, Maintenance Planning Applied to Industrial Processes",
+      institution: "Universidad Simón Bolívar",
+      location: "Caracas, Venezuela",
+      startDate: "",
+      endDate: "",
+    },
+    {
+      degree: "Bachelor's Degree, Mechanical Engineering",
+      institution: "Universidad Simón Bolívar",
+      location: "Caracas, Venezuela",
+      startDate: "",
+      endDate: "",
     },
   ],
   skills: [
     {
-      category: "Lorem",
-      items: ["Ipsum", "Dolor", "Sit", "Amet", "asdasd"],
+      category: "Core Skills",
+      variant: "list",
+      items: [
+        "Web development and hosting",
+        "Web3 development in Polkadot and EVM ecosystems",
+        "Service integrations (REST APIs, JSON-RPC, WebSockets, SDKs)",
+        "CI/CD pipelines, automated testing, and QA",
+        "Agile project management (Scrum, Kanban)",
+      ],
     },
     {
-      category: "Adipiscing",
-      items: ["Elit", "Sed", "Do", "Eiusmod", "Tempor"],
+      category: "Programming & Development",
+      items: [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Next.js",
+        "jQuery",
+        "PHP",
+        "Symfony",
+        "Laravel",
+        "MySQL",
+        "SQL Server",
+        "DynamoDB",
+        "PostgreSQL",
+        "Drizzle",
+        "Supabase",
+        "Natural",
+        "ADABAS",
+        "Wagmi",
+        "Ethers.js",
+        "Viem",
+        "Solidity",
+      ],
     },
     {
-      category: "Incididunt",
-      items: ["Ut", "Labore", "Dolore", "Magna", "Aliqua", "Veniam"],
+      category: "Tools & Platforms",
+      items: [
+        "Playwright",
+        "Vitest",
+        "Jest",
+        "GitHub Actions",
+        "Docker",
+        "AWS",
+        "GitHub",
+        "GitLab",
+        "Jira",
+        "Confluence",
+        "Notion",
+        "Figma",
+        "Google Analytics",
+        "Postman",
+        "Cloud platforms (GCP, AWS)",
+      ],
     },
   ],
   certifications: [
     {
-      name: "Lorem Ipsum Certification",
-      issuer: "Dolor Sit Amet",
-      year: "0000",
-      url: "https://example.com/lorem-certification",
-    },
-    {
-      name: "Consectetur Adipiscing Elit",
-      issuer: "Sed Do Eiusmod",
-      year: "0000",
-      url: "https://example.com/consectetur-certification",
+      name: "Ethereum and Solidity",
+      issuer: "Udemy",
+      year: "2021",
+      url: "https://www.udemy.com/certificate/UC-8f15db2c-4ebc-4e37-b1a0-cfb31592da01/",
     },
   ],
   languages: [
-    { name: "Lorem", level: "Ipsum" },
-    { name: "Dolor", level: "Sit" },
-    { name: "Amet", level: "Consectetur" },
+    { name: "Spanish", level: "Native" },
+    { name: "English", level: "Advanced" },
   ],
 };
