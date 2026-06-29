@@ -1,6 +1,7 @@
 ---
 import type { Header } from "../../data/resume";
 import { HEADER_SHADER_ENABLED } from "../../lib/header-shader";
+import DownloadPdfButton from "./DownloadPdfButton.astro";
 import HeaderAccent from "./HeaderAccent.astro";
 import HeaderIconTooltip from "./HeaderIconTooltip.astro";
 
@@ -16,6 +17,8 @@ function findLink(label: string) {
 
 const linkedInLink = findLink("LinkedIn");
 const githubLink = findLink("GitHub");
+
+const pdfFilename = `${header.name.replace(/\s+/g, "_")}_Resume`;
 
 const chipBase =
   "inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-800 no-underline transition-colors hover:border-accent hover:text-accent dark:border-border dark:bg-surface-muted dark:text-stone-200 print:border-gray-300 print:bg-transparent print:text-black print:no-underline";
@@ -49,6 +52,7 @@ const chipBase =
     </p>
   </div>
   <div class="relative z-10 flex flex-wrap items-center gap-2 sm:justify-end">
+    <DownloadPdfButton filename={pdfFilename} class={chipBase} />
     <a href="#contact" class={chipBase}>Contact</a>
     <HeaderIconTooltip
       kind="location"

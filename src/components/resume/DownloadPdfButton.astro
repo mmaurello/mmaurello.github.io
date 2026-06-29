@@ -1,0 +1,70 @@
+---
+interface Props {
+  filename: string;
+  class?: string;
+}
+
+const { filename, class: className } = Astro.props;
+---
+
+<button
+  type="button"
+  id="download-pdf"
+  class:list={["print:hidden", className]}
+  aria-label="Download resume as PDF"
+  data-filename={filename}
+>
+  <svg
+    class="size-3.5 shrink-0"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+    <polyline points="7 10 12 15 17 10"></polyline>
+    <line x1="12" x2="12" y1="15" y2="3"></line>
+  </svg>
+  <span class="ml-1">PDF</span>
+</button>
+
+<script>
+function preparePrint() {
+  for (const el of document.querySelectorAll(".reveal")) {
+    el.classList.add("is-visible");
+  }
+}
+
+function setupDownloadPdf() {
+  const button = document.getElementById("download-pdf");
+  if (!(button instanceof HTMLButtonElement) || button.dataset.bound === "true") {
+    return;
+  }
+  button.dataset.bound = "true";
+
+  const originalTitle = document.title;
+  const filename = button.dataset.filename;
+
+  const restoreTitle = () => {
+    document.title = originalTitle;
+    window.removeEventListener("afterprint", restoreTitle);
+  };
+
+  button.addEventListener("click", () => {
+    preparePrint();
+    if (filename) {
+      document.title = filename;
+      window.addEventListener("afterprint", restoreTitle);
+    }
+    window.print();
+  });
+}
+
+setupDownloadPdf();
+document.addEventListener("astro:page-load", setupDownloadPdf);
+window.addEventListener("beforeprint", preparePrint);
+</script>
