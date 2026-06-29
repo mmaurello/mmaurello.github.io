@@ -104,6 +104,28 @@ export const resume: Resume = {
         "Quam nihil molestiae consequatur vel illum qui dolorem eum fugiat quo.",
       ],
     },
+    {
+      role: "22323 Elit Sed",
+      company: "Tempor Agency",
+      location: "Incididunt, Labore",
+      startDate: "Ut 0000",
+      endDate: "Enim 0000",
+      highlights: [
+        "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse.",
+        "Quam nihil molestiae consequatur vel illum qui dolorem eum fugiat quo.",
+      ],
+    },
+    {
+      role: "addd Elit Sed",
+      company: "Tempor Agency",
+      location: "Incididunt, Labore",
+      startDate: "Ut 0000",
+      endDate: "Enim 0000",
+      highlights: [
+        "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse.",
+        "Quam nihil molestiae consequatur vel illum qui dolorem eum fugiat quo.",
+      ],
+    },
   ],
   education: [
     {
