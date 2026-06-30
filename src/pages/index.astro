@@ -5,21 +5,31 @@ import Education from "../components/resume/Education.astro";
 import Experience from "../components/resume/Experience.astro";
 import Header from "../components/resume/Header.astro";
 import Languages from "../components/resume/Languages.astro";
+import SectionNav from "../components/resume/SectionNav.astro";
 import Skills from "../components/resume/Skills.astro";
 import Summary from "../components/resume/Summary.astro";
-import { resume } from "../data/resume";
+import { resume, sectionNav } from "../data/resume";
 import Layout from "../layouts/Layout.astro";
 
-const { header, summary, experience, previousExperience, education, skills, certifications, languages } =
-  resume;
+const {
+  header,
+  summary,
+  experience,
+  previousExperience,
+  education,
+  skills,
+  certifications,
+  languages,
+} = resume;
 ---
 
 <Layout title={`${header.name} — Resume`}>
   <Header header={header} />
+  <SectionNav links={sectionNav} />
   <Summary summary={summary} />
-  <Experience experience={experience} />
+  <Experience experience={experience} id="experience" />
   {previousExperience && previousExperience.length > 0 && (
-    <Experience experience={previousExperience} title="Earlier Roles" compact />
+    <Experience experience={previousExperience} title="Earlier Roles" compact id="earlier-roles" />
   )}
   <Education education={education} />
   <Skills skills={skills} />
