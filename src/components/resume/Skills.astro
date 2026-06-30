@@ -1,6 +1,7 @@
 ---
 import type { SkillGroup } from "../../data/resume";
 import Section from "./Section.astro";
+import SkillChip from "./SkillChip.astro";
 
 interface Props {
   skills: SkillGroup[];
@@ -16,13 +17,19 @@ const { skills } = Astro.props;
 					<h3 class="mb-2 text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-stone-400">
 						{group.category}
 					</h3>
-					<div class="flex flex-wrap gap-1.5">
-						{group.items.map((item) => (
-							<span class="inline-block rounded-md bg-accent-light px-2.5 py-1 text-xs font-medium text-accent dark:text-accent-muted print:border print:border-gray-300 print:bg-transparent print:text-black">
-								{item}
-							</span>
-						))}
-					</div>
+					{group.variant === "list" ? (
+						<ul class="m-0 flex list-disc flex-col gap-1.5 pl-5">
+							{group.items.map((item) => (
+								<li class="text-[0.9375rem] leading-relaxed text-slate-800 dark:text-stone-200">{item}</li>
+							))}
+						</ul>
+					) : (
+						<div class="flex flex-wrap gap-1.5">
+							{group.items.map((item) => (
+								<SkillChip label={item} />
+							))}
+						</div>
+					)}
 				</div>
 			))}
   </div>

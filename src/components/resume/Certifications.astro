@@ -13,19 +13,30 @@ const { certifications } = Astro.props;
   <ul class="m-0 flex list-none flex-col gap-3.5 p-0">
     {certifications.map((cert) => (
 				<li>
-					<a
-						href={cert.url}
-						class="group -mx-1.5 flex flex-col gap-0.5 rounded-md px-1.5 py-1 no-underline transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent print:text-black print:no-underline"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<span class="text-[0.9375rem] font-semibold text-slate-800 transition-colors group-hover:text-accent dark:text-stone-100 print:text-black">
-							{cert.name}
-						</span>
-						<span class="text-xs text-slate-500 dark:text-stone-400">
-							{cert.issuer} · {cert.year}
-						</span>
-					</a>
+					{cert.url ? (
+						<a
+							href={cert.url}
+							class="group -mx-1.5 flex flex-col gap-0.5 rounded-md px-1.5 py-1 no-underline transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent print:text-black print:no-underline"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<span class="text-[0.9375rem] font-semibold text-slate-800 transition-colors group-hover:text-accent dark:text-stone-100 print:text-black">
+								{cert.name}
+							</span>
+							<span class="text-xs text-slate-500 dark:text-stone-400">
+								{cert.issuer} · {cert.year}
+							</span>
+						</a>
+					) : (
+						<div class="-mx-1.5 flex flex-col gap-0.5 px-1.5 py-1">
+							<span class="text-[0.9375rem] font-semibold text-slate-800 dark:text-stone-100 print:text-black">
+								{cert.name}
+							</span>
+							<span class="text-xs text-slate-500 dark:text-stone-400">
+								{cert.issuer} · {cert.year}
+							</span>
+						</div>
+					)}
 				</li>
 			))}
   </ul>

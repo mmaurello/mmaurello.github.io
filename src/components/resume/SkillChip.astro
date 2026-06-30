@@ -1,0 +1,12 @@
+---
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+
+const chipClass =
+  "inline-block rounded-md bg-accent-light px-2.5 py-1 text-xs font-medium text-accent transition-colors duration-150 hover:bg-accent hover:text-white dark:text-accent-muted dark:hover:bg-accent dark:hover:text-white print:border print:border-gray-300 print:bg-transparent print:text-black";
+---
+
+<span class={chipClass}>{label}</span>
