@@ -15,8 +15,7 @@ const chipGroups = skills.filter((group) => group.variant !== "list");
 
 <Section title="Skills">
   <div class="flex flex-col gap-6">
-    {
-      listGroups.map((group) => (
+    {listGroups.map((group) => (
         <div>
           <h3 class="mb-2 text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-stone-400">
             {group.category}
@@ -27,11 +26,9 @@ const chipGroups = skills.filter((group) => group.variant !== "list");
             ))}
           </ul>
         </div>
-      ))
-    }
+      ))}
     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-x-8">
-      {
-        chipGroups.map((group) => (
+      {chipGroups.map((group) => (
           <div>
             <h3 class="mb-2 text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-stone-400">
               {group.category}
@@ -42,8 +39,7 @@ const chipGroups = skills.filter((group) => group.variant !== "list");
               ))}
             </div>
           </div>
-        ))
-      }
+        ))}
     </div>
   </div>
 </Section>
