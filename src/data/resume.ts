@@ -51,6 +51,7 @@ export interface Resume {
   header: Header;
   summary: string;
   experience: ExperienceEntry[];
+  previousExperience?: ExperienceEntry[];
   education: EducationEntry[];
   skills: SkillGroup[];
   certifications: Certification[];
@@ -173,6 +174,8 @@ export const resume: Resume = {
       ],
       skills: ["PHP", "MySQL"],
     },
+  ],
+  previousExperience: [
     {
       role: "Natural ADABAS Junior Programmer",
       company: "Software AG",
@@ -227,49 +230,37 @@ export const resume: Resume = {
       ],
     },
     {
-      category: "Programming & Development",
-      items: [
-        "JavaScript",
-        "TypeScript",
-        "React",
-        "Node.js",
-        "Next.js",
-        "jQuery",
-        "PHP",
-        "Symfony",
-        "Laravel",
-        "MySQL",
-        "SQL Server",
-        "DynamoDB",
-        "PostgreSQL",
-        "Drizzle",
-        "Supabase",
-        "Natural",
-        "ADABAS",
-        "Wagmi",
-        "Ethers.js",
-        "Viem",
-        "Solidity",
-      ],
+      category: "Languages",
+      items: ["JavaScript", "TypeScript", "PHP", "Solidity"],
     },
     {
-      category: "Tools & Platforms",
+      category: "Frontend & Web3",
+      items: ["React", "Next.js", "Wagmi", "Ethers.js", "Viem"],
+    },
+    {
+      category: "Backend & Frameworks",
+      items: ["Node.js", "Symfony", "Laravel"],
+    },
+    {
+      category: "Databases",
+      items: ["MySQL", "SQL Server", "PostgreSQL", "DynamoDB", "Drizzle", "Supabase"],
+    },
+    {
+      category: "Testing & CI/CD",
+      items: ["Playwright", "Vitest", "Jest", "GitHub Actions", "Docker"],
+    },
+    {
+      category: "Cloud & Collaboration",
       items: [
-        "Playwright",
-        "Vitest",
-        "Jest",
-        "GitHub Actions",
-        "Docker",
         "AWS",
+        "GCP",
         "GitHub",
         "GitLab",
         "Jira",
         "Confluence",
         "Notion",
         "Figma",
-        "Google Analytics",
         "Postman",
-        "Cloud platforms (GCP, AWS)",
       ],
     },
   ],
