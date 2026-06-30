@@ -8,29 +8,38 @@ interface Props {
 }
 
 const { skills } = Astro.props;
+
+const listGroups = skills.filter((group) => group.variant === "list");
+const chipGroups = skills.filter((group) => group.variant !== "list");
 ---
 
 <Section title="Skills">
-  <div class="flex flex-col gap-5">
-    {skills.map((group) => (
-				<div>
-					<h3 class="mb-2 text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-stone-400">
-						{group.category}
-					</h3>
-					{group.variant === "list" ? (
-						<ul class="m-0 flex list-disc flex-col gap-1.5 pl-5">
-							{group.items.map((item) => (
-								<li class="text-[0.9375rem] leading-relaxed text-slate-800 dark:text-stone-200">{item}</li>
-							))}
-						</ul>
-					) : (
-						<div class="flex flex-wrap gap-1.5">
-							{group.items.map((item) => (
-								<SkillChip label={item} />
-							))}
-						</div>
-					)}
-				</div>
-			))}
+  <div class="flex flex-col gap-6">
+    {listGroups.map((group) => (
+        <div>
+          <h3 class="mb-2 text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-stone-400">
+            {group.category}
+          </h3>
+          <ul class="m-0 flex list-disc flex-col gap-1.5 pl-5">
+            {group.items.map((item) => (
+              <li class="text-[0.9375rem] leading-relaxed text-slate-800 dark:text-stone-200">{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-x-8">
+      {chipGroups.map((group) => (
+          <div>
+            <h3 class="mb-2 text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-stone-400">
+              {group.category}
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <SkillChip label={item} />
+              ))}
+            </div>
+          </div>
+        ))}
+    </div>
   </div>
 </Section>
