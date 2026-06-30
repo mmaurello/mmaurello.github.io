@@ -7,12 +7,13 @@ interface Props {
   experience: ExperienceEntry[];
   title?: string;
   compact?: boolean;
+  id?: string;
 }
 
-const { experience, title = "Experience", compact = false } = Astro.props;
+const { experience, title = "Experience", compact = false, id } = Astro.props;
 ---
 
-<Section title={title}>
+<Section title={title} id={id}>
   <ul class="m-0 flex list-none flex-col gap-6 p-0">
     {experience.map((job, index) => (
       <li

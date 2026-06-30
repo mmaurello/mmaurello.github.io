@@ -22,6 +22,9 @@ const pdfFilename = `${header.name.replace(/\s+/g, "_")}_Resume`;
 
 const chipBase =
   "inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-800 no-underline transition-colors hover:border-accent hover:text-accent dark:border-border dark:bg-surface-muted dark:text-stone-200 print:border-gray-300 print:bg-transparent print:text-black print:no-underline";
+
+const contactCta =
+  "inline-flex items-center rounded-full bg-accent px-3 py-1.5 text-xs font-medium text-white no-underline transition-colors hover:bg-accent-hover print:hidden";
 ---
 
 <header
@@ -78,12 +81,13 @@ const chipBase =
   </div>
   <div class="relative z-10 flex justify-end gap-2">
     <DownloadPdfButton filename={pdfFilename} class={chipBase} />
-    <a href="#contact" class={chipBase}>Contact</a>
+    <a href="#contact" data-smooth-section class={contactCta}>Contact</a>
   </div>
 </header>
 
 <script>
 import { HEADER_SHADER_ENABLED, initHeaderShader } from "../../lib/header-shader";
+import { initSmoothSectionScroll } from "../../lib/section-scroll";
 
 let cleanupShader: (() => void) | null = null;
 
@@ -100,6 +104,12 @@ function setupHeaderShader() {
   cleanupShader = initHeaderShader(canvas, header);
 }
 
-setupHeaderShader();
-document.addEventListener("astro:page-load", setupHeaderShader);
+function setupHeader() {
+  setupHeaderShader();
+  const header = document.getElementById("resume-header");
+  if (header) initSmoothSectionScroll(header);
+}
+
+setupHeader();
+document.addEventListener("astro:page-load", setupHeader);
 </script>

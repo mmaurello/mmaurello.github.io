@@ -47,6 +47,11 @@ export interface Language {
   level: string;
 }
 
+export interface SectionNavLink {
+  label: string;
+  id: string;
+}
+
 export interface Resume {
   header: Header;
   summary: string;
@@ -57,6 +62,15 @@ export interface Resume {
   certifications: Certification[];
   languages: Language[];
 }
+
+export const sectionNav: SectionNavLink[] = [
+  { label: "Summary", id: "summary" },
+  { label: "Experience", id: "experience" },
+  { label: "Earlier Roles", id: "earlier-roles" },
+  { label: "Education", id: "education" },
+  { label: "Skills", id: "skills" },
+  { label: "Certifications", id: "certifications" },
+];
 
 export const resume: Resume = {
   header: {
