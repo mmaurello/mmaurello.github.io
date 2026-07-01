@@ -75,6 +75,39 @@
     size: A4;
   }
 
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body,
+  body :where(p, li, span, a, h1, h2, h3, h4, h5, h6) {
+    color: #000;
+  }
+
+  #summary {
+    break-after: avoid;
+    padding-bottom: 0.5rem;
+    border-bottom: none;
+  }
+
+  #experience {
+    break-before: avoid;
+    margin-top: 0;
+    padding-top: 0.5rem;
+    border-top: none;
+  }
+
+  #summary + #experience h2 {
+    margin-top: 0;
+  }
+
   .header-accent__stroke {
     stroke-dashoffset: 0;
   }
