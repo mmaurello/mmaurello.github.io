@@ -11,7 +11,13 @@ interface Props {
   class?: string;
 }
 
-const { experience, title = "Experience", compact = false, id, class: className } = Astro.props;
+const {
+  experience,
+  title = "Experience",
+  compact = false,
+  id,
+  class: className,
+} = Astro.props;
 ---
 
 <Section title={title} id={id} class={className}>

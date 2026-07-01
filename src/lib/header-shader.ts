@@ -74,8 +74,8 @@ const FRAGMENT_SHADER = `
 
     if (u_dark < 0.5) {
       vec3 pale = vec3(1.0, 0.995, 0.992);
-      vec3 mid = vec3(0.99, 0.96, 0.965);
-      vec3 deep = vec3(0.74, 0.78, 0.86);
+      vec3 mid = vec3(0.98, 0.96, 0.965);
+      vec3 deep = vec3(0.67, 0.78, 0.86);
       vec3 color = mix(mix(pale, mid, field), deep, field * field * 0.3);
       gl_FragColor = vec4(color, 1.0);
     } else {

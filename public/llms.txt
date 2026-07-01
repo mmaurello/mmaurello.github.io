@@ -4,7 +4,7 @@
 
 ## Canonical URL
 
-- https://mmaurello.github.io/
+- https://mjmaurello.dev/
 
 ## What is here
 
@@ -13,6 +13,6 @@
 
 ## For automated tools
 
-- Prefer fetching `https://mmaurello.github.io/` for up-to-date content.
-- Machine-readable sitemap: `https://mmaurello.github.io/sitemap-index.xml`
-- Crawl policy: `https://mmaurello.github.io/robots.txt`
+- Prefer fetching `https://mjmaurello.dev/` for up-to-date content.
+- Machine-readable sitemap: `https://mjmaurello.dev/sitemap-index.xml`
+- Crawl policy: `https://mjmaurello.dev/robots.txt`
