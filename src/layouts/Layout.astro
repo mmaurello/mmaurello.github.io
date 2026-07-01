@@ -39,5 +39,11 @@ const { title = "Resume" } = Astro.props;
     >
       <slot />
     </main>
+    <footer
+      id="footer"
+      class="mx-auto max-w-3xl px-4 pb-8 text-center text-sm text-slate-500 sm:px-6 sm:pb-10 dark:text-stone-400 print:hidden"
+    >
+      <p>© {new Date().getFullYear()} Mario Jose Maurello</p>
+    </footer>
   </body>
 </html>
