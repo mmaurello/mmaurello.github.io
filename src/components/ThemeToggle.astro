@@ -1,7 +1,7 @@
 <button
   type="button"
   id="theme-toggle"
-  class="fixed top-4 right-4 z-50 inline-flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent dark:border-border dark:bg-surface-raised dark:text-stone-300 dark:hover:border-accent dark:hover:text-accent-muted print:hidden"
+  class="fixed top-4 right-4 z-50 inline-flex size-10 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent dark:border-border dark:bg-surface-raised dark:text-stone-300 dark:hover:border-accent dark:hover:text-accent-muted print:hidden"
   aria-label="Switch to dark mode"
   aria-pressed="false"
 >
@@ -70,8 +70,8 @@ function applyTheme(theme) {
     toggle.setAttribute("aria-pressed", String(isDark));
   }
   if (lightIcon instanceof SVGElement && darkIcon instanceof SVGElement) {
-    lightIcon.classList.toggle("hidden", isDark);
-    darkIcon.classList.toggle("hidden", !isDark);
+    lightIcon.classList.toggle("hidden", !isDark);
+    darkIcon.classList.toggle("hidden", isDark);
   }
 }
 
