@@ -18,8 +18,6 @@ function findLink(label: string) {
 const linkedInLink = findLink("LinkedIn");
 const githubLink = findLink("GitHub");
 
-const pdfFilename = `${header.name.replace(/\s+/g, "_")}_Resume`;
-
 const chipBase =
   "inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-800 no-underline transition-colors hover:border-accent hover:text-accent dark:border-border dark:bg-surface-muted dark:text-stone-200 print:border-gray-300 print:bg-transparent print:text-black print:no-underline";
 
@@ -29,7 +27,7 @@ const contactCta =
 
 <header
   id="resume-header"
-  class="reveal relative isolate flex flex-col gap-4 rounded-xl border border-slate-200 p-6 shadow-sm sm:p-7 dark:border-border print:translate-none print:opacity-100 print:transition-none print:border-gray-300 print:shadow-none print:break-inside-avoid"
+  class="reveal relative isolate flex flex-col gap-4 rounded-xl border border-slate-200 p-6 shadow-sm sm:p-7 dark:border-border print:translate-none print:opacity-100 print:transition-none print:gap-2 print:rounded-none print:border-gray-300 print:p-3 print:shadow-none print:break-after-avoid"
 >
   <div
     class="absolute inset-0 overflow-hidden rounded-xl bg-white dark:bg-surface-raised print:bg-white"
@@ -79,8 +77,8 @@ const contactCta =
       )}
     </div>
   </div>
-  <div class="relative z-10 flex justify-end gap-2">
-    <DownloadPdfButton filename={pdfFilename} class={chipBase} />
+  <div class="relative z-10 flex justify-end gap-2 print:hidden">
+    <DownloadPdfButton class={chipBase} />
     <a href="#contact" data-smooth-section class={contactCta}>Contact</a>
   </div>
 </header>

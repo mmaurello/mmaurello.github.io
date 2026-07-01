@@ -29,4 +29,12 @@ function initScrollReveal() {
 
 initScrollReveal();
 document.addEventListener("astro:page-load", initScrollReveal);
+
+function preparePrint() {
+  for (const el of document.querySelectorAll(".reveal")) {
+    el.classList.add("is-visible");
+  }
+}
+
+window.addEventListener("beforeprint", preparePrint);
 </script>

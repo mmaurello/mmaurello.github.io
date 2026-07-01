@@ -64,13 +64,18 @@ export interface Resume {
 }
 
 export const sectionNav: SectionNavLink[] = [
-  { label: "Summary", id: "summary" },
   { label: "Experience", id: "experience" },
   { label: "Earlier Roles", id: "earlier-roles" },
   { label: "Education", id: "education" },
   { label: "Skills", id: "skills" },
   { label: "Certifications", id: "certifications" },
 ];
+
+/** Static resume PDF in /public — update when resume content changes. */
+export const resumePdf = {
+  href: "/CV_MJM_2026.pdf",
+  download: "Mario_Jose_Maurello_Resume.pdf",
+} as const;
 
 export const resume: Resume = {
   header: {
