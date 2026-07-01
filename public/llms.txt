@@ -1,0 +1,18 @@
+# Mario Jose Maurello — personal site
+
+> Online resume for Mario Jose Maurello, Full-Stack Software Engineer (web applications, Web3 / dApps).
+
+## Canonical URL
+
+- https://mmaurello.github.io/
+
+## What is here
+
+- Single-page resume: summary, experience, education, skills, certifications, languages.
+- Source of truth for biographical and professional details is the HTML page at the URL above.
+
+## For automated tools
+
+- Prefer fetching `https://mmaurello.github.io/` for up-to-date content.
+- Machine-readable sitemap: `https://mmaurello.github.io/sitemap-index.xml`
+- Crawl policy: `https://mmaurello.github.io/robots.txt`
