@@ -52,6 +52,21 @@ export interface SectionNavLink {
   id: string;
 }
 
+export interface RecentWorkImage {
+  src: string;
+  alt: string;
+}
+
+export interface RecentWorkEntry {
+  name: string;
+  description: string;
+  role: string;
+  company: string;
+  url?: string;
+  hero: RecentWorkImage;
+  gallery: RecentWorkImage[];
+}
+
 export interface Resume {
   header: Header;
   summary: string;
@@ -61,6 +76,7 @@ export interface Resume {
   skills: SkillGroup[];
   certifications: Certification[];
   languages: Language[];
+  recentWork: RecentWorkEntry[];
 }
 
 export const sectionNav: SectionNavLink[] = [
@@ -69,6 +85,7 @@ export const sectionNav: SectionNavLink[] = [
   { label: "Education", id: "education" },
   { label: "Skills", id: "skills" },
   { label: "Certifications", id: "certifications" },
+  { label: "Recent Work", id: "recent-work" },
 ];
 
 /** Static resume PDF in /public — update when resume content changes. */
@@ -294,5 +311,53 @@ export const resume: Resume = {
   languages: [
     { name: "Spanish", level: "Native" },
     { name: "English", level: "Advanced" },
+  ],
+  recentWork: [
+    {
+      name: "Moonbeam Foundation dApp",
+      description:
+        "EVM-compatible dApp for the Moonbeam ecosystem, with wallet integrations, cross-chain bridging, and on-chain interactions across the network.",
+      role: "Owned end-to-end development",
+      company: "Opslayer",
+      hero: {
+        src: "/recent-work/moonbeam/moonbeam_hero.webp",
+        alt: "Moonbeam Foundation dApp governance interface",
+      },
+      gallery: [
+        {
+          src: "/recent-work/moonbeam/moonbeam_1.webp",
+          alt: "Moonbeam Foundation dApp staking dashboard view",
+        },
+        {
+          src: "/recent-work/moonbeam/moonbeam_2.webp",
+          alt: "Moonbeam Foundation dApp staking candidates view",
+        },
+        {
+          src: "/recent-work/moonbeam/moonbeam_3.webp",
+          alt: "Moonbeam Foundation dApp projects view",
+        },
+      ],
+    },
+    {
+      name: "Tanssi Network dApp",
+      description:
+        "Web application for the Tanssi appchain ecosystem, including wallet connectivity, cross-chain bridging, and on-chain data flows.",
+      role: "Owned end-to-end development",
+      company: "Opslayer",
+      hero: {
+        src: "/recent-work/tanssi/tanssi_hero.webp",
+        alt: "Tanssi Network dApp main interface",
+      },
+      gallery: [
+        {
+          src: "/recent-work/tanssi/tanssi_1.webp",
+          alt: "Tanssi Network dApp wallet briding page",
+        },
+        {
+          src: "/recent-work/tanssi/tanssi_2.webp",
+          alt: "Tanssi Network dApp proxies page",
+        },
+      ],
+    },
   ],
 };

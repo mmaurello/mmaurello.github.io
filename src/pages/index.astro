@@ -5,6 +5,7 @@ import Education from "../components/resume/Education.astro";
 import Experience from "../components/resume/Experience.astro";
 import Header from "../components/resume/Header.astro";
 import Languages from "../components/resume/Languages.astro";
+import RecentWork from "../components/resume/RecentWork.astro";
 import SectionNav from "../components/resume/SectionNav.astro";
 import Skills from "../components/resume/Skills.astro";
 import Summary from "../components/resume/Summary.astro";
@@ -20,6 +21,7 @@ const {
   skills,
   certifications,
   languages,
+  recentWork,
 } = resume;
 ---
 
@@ -39,5 +41,6 @@ const {
     <Certifications certifications={certifications} />
     <Languages languages={languages} />
   </div>
+  <RecentWork items={recentWork} />
   <Contact />
 </Layout>
