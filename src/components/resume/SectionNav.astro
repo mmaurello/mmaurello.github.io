@@ -8,7 +8,7 @@ interface Props {
 const { links } = Astro.props;
 
 const linkClass =
-  "inline-block shrink-0 -mb-px border-b-2 border-transparent px-2.5 py-2 text-sm font-medium text-slate-500 no-underline transition-[color,border-color] duration-200 hover:border-accent/50 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent dark:text-stone-400 dark:hover:text-accent-muted";
+  "inline-block shrink-0 whitespace-nowrap -mb-px border-b-2 border-transparent px-2.5 py-2 text-sm font-medium text-slate-500 no-underline transition-[color,border-color] duration-200 hover:border-accent/50 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent dark:text-stone-400 dark:hover:text-accent-muted";
 ---
 
 <nav
@@ -16,7 +16,7 @@ const linkClass =
   aria-label="Resume sections"
   class="reveal border-b border-slate-200 dark:border-border print:hidden"
 >
-  <ul class="m-0 flex list-none gap-0 overflow-x-auto overflow-y-clip p-0 sm:gap-1">
+  <ul class="m-0 flex flex-nowrap list-none gap-0 overflow-x-auto overflow-y-clip p-0 sm:gap-1">
     {links.map((link) => (
         <li>
           <a href={`#${link.id}`} data-smooth-section class={linkClass}>
