@@ -1,3 +1,13 @@
+import type { ImageMetadata } from "astro";
+
+import moonbeam1 from "../assets/recent-work/moonbeam/moonbeam_1.webp";
+import moonbeam2 from "../assets/recent-work/moonbeam/moonbeam_2.webp";
+import moonbeam3 from "../assets/recent-work/moonbeam/moonbeam_3.webp";
+import moonbeamHero from "../assets/recent-work/moonbeam/moonbeam_hero.webp";
+import tanssi1 from "../assets/recent-work/tanssi/tanssi_1.webp";
+import tanssi2 from "../assets/recent-work/tanssi/tanssi_2.webp";
+import tanssiHero from "../assets/recent-work/tanssi/tanssi_hero.webp";
+
 export interface ContactLink {
   label: string;
   url: string;
@@ -53,7 +63,7 @@ export interface SectionNavLink {
 }
 
 export interface RecentWorkImage {
-  src: string;
+  src: ImageMetadata;
   alt: string;
 }
 
@@ -320,20 +330,20 @@ export const resume: Resume = {
       role: "Owned end-to-end development",
       company: "Opslayer",
       hero: {
-        src: "/recent-work/moonbeam/moonbeam_hero.webp",
+        src: moonbeamHero,
         alt: "Moonbeam Foundation dApp governance interface",
       },
       gallery: [
         {
-          src: "/recent-work/moonbeam/moonbeam_1.webp",
+          src: moonbeam1,
           alt: "Moonbeam Foundation dApp staking dashboard view",
         },
         {
-          src: "/recent-work/moonbeam/moonbeam_2.webp",
+          src: moonbeam2,
           alt: "Moonbeam Foundation dApp staking candidates view",
         },
         {
-          src: "/recent-work/moonbeam/moonbeam_3.webp",
+          src: moonbeam3,
           alt: "Moonbeam Foundation dApp projects view",
         },
       ],
@@ -345,16 +355,16 @@ export const resume: Resume = {
       role: "Owned end-to-end development",
       company: "Opslayer",
       hero: {
-        src: "/recent-work/tanssi/tanssi_hero.webp",
+        src: tanssiHero,
         alt: "Tanssi Network dApp main interface",
       },
       gallery: [
         {
-          src: "/recent-work/tanssi/tanssi_1.webp",
+          src: tanssi1,
           alt: "Tanssi Network dApp wallet briding page",
         },
         {
-          src: "/recent-work/tanssi/tanssi_2.webp",
+          src: tanssi2,
           alt: "Tanssi Network dApp proxies page",
         },
       ],

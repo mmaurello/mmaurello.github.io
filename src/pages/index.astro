@@ -23,9 +23,11 @@ const {
   languages,
   recentWork,
 } = resume;
+
+const description = `${header.name}, ${header.title} in ${header.location}. 8+ years building production web apps in React, TypeScript, PHP, and AWS, focused on Web3 and dApps.`;
 ---
 
-<Layout title={`${header.name} — ${header.title}`}>
+<Layout title={`${header.name} — ${header.title}`} description={description}>
   <Header header={header} />
   <SectionNav links={sectionNav} />
   <div class="flex flex-col gap-4 sm:gap-5 print:gap-0">

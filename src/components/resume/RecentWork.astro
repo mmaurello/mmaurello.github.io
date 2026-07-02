@@ -1,4 +1,5 @@
 ---
+import { getImage, Image } from "astro:assets";
 import type { RecentWorkEntry } from "../../data/resume";
 import Section from "./Section.astro";
 
@@ -8,10 +9,24 @@ interface Props {
 
 const { items } = Astro.props;
 
-const carouselItems = items.map((item) => ({
-  ...item,
-  images: [item.hero, ...item.gallery],
-}));
+// Build a responsive in-page image set plus a right-sized (1600px) version for
+// the full-screen lightbox, so we no longer ship ~3800px-wide originals.
+const carouselItems = await Promise.all(
+  items.map(async (item) => {
+    const images = [item.hero, ...item.gallery];
+    const lightboxImages = await Promise.all(
+      images.map(async (image) => {
+        const optimized = await getImage({
+          src: image.src,
+          width: 1600,
+          format: "webp",
+        });
+        return { src: optimized.src, alt: image.alt };
+      }),
+    );
+    return { ...item, images, lightboxImages };
+  }),
+);
 
 const navButtonClass =
   "absolute top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-accent shadow-sm transition-[opacity,background-color,border-color,color] duration-200 hover:border-accent hover:bg-accent hover:text-white focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:pointer-events-none disabled:opacity-30 dark:border-border dark:bg-surface-raised dark:text-accent-muted dark:hover:border-accent dark:hover:bg-accent dark:hover:text-white sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100";
@@ -30,7 +45,7 @@ const dotClass =
       <article
         class="flex flex-col gap-4"
         data-work-carousel
-        data-images={JSON.stringify(item.images)}
+        data-images={JSON.stringify(item.lightboxImages)}
       >
         <div class="flex flex-col gap-2">
           {item.url ? (
@@ -89,10 +104,11 @@ const dotClass =
                     class="flex min-w-full max-h-[min(18rem,55vh)] cursor-zoom-in items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:max-h-[min(26rem,62vh)]"
                     aria-label={`View screenshot ${slideIndex + 1} full size`}
                   >
-                    <img
+                    <Image
                       src={image.src}
                       alt={image.alt}
-                      width={1200}
+                      widths={[400, 800, 1200, 1536]}
+                      sizes="(max-width: 640px) 92vw, (max-width: 768px) 88vw, 720px"
                       loading="lazy"
                       decoding="async"
                       class="max-h-[min(18rem,55vh)] w-full object-contain sm:max-h-[min(26rem,62vh)]"

@@ -5,9 +5,10 @@ import "../styles/global.css";
 
 interface Props {
   title?: string;
+  description?: string;
 }
 
-const { title = "Resume" } = Astro.props;
+const { title = "Resume", description = "" } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,6 +16,7 @@ const { title = "Resume" } = Astro.props;
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {description && <meta name="description" content={description} />}
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
     <link rel="icon" sizes="32x32" href="/favicon.ico">
     <meta name="generator" content={Astro.generator}>
