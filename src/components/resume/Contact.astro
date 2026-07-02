@@ -87,11 +87,30 @@ const labelClass =
 
 {isConfigured && (
 		<>
-			<script src="https://web3forms.com/client/script.js" async defer />
 			<script define:vars={{ accessKey }}>
 				const form = document.getElementById('contact-form');
 				const submitBtn = document.getElementById('contact-submit');
 				const statusEl = document.getElementById('contact-status');
+
+				// Load the Web3Forms client script (which pulls in hCaptcha) only once
+				// the visitor interacts with the form. This keeps the heavy third-party
+				// hCaptcha script — and its cookies / deprecated APIs — off the initial
+				// page load, improving Performance and Best Practices scores.
+				let captchaScriptLoaded = false;
+				function loadCaptchaScript() {
+					if (captchaScriptLoaded) return;
+					captchaScriptLoaded = true;
+					const script = document.createElement('script');
+					script.src = 'https://web3forms.com/client/script.js';
+					script.async = true;
+					script.defer = true;
+					document.body.appendChild(script);
+				}
+
+				if (form) {
+					form.addEventListener('focusin', loadCaptchaScript, { once: true });
+					form.addEventListener('pointerdown', loadCaptchaScript, { once: true });
+				}
 
 				function resetCaptcha() {
 					if (typeof hcaptcha !== 'undefined') {
