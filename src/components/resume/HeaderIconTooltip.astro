@@ -3,18 +3,16 @@ interface Props {
   kind: "location" | "linkedin" | "github";
   href?: string;
   ariaLabel: string;
-  tooltip?: string | string[];
+  tooltip?: string;
 }
 
 const { kind, href, ariaLabel, tooltip } = Astro.props;
-
-const tooltipLines = tooltip == null ? [] : Array.isArray(tooltip) ? tooltip : [tooltip];
 
 const iconButtonClass =
   "inline-flex size-10 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-600 transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent dark:border-border dark:bg-surface-muted dark:text-stone-300 dark:hover:border-accent dark:hover:text-accent-muted print:border-gray-300 print:bg-transparent print:text-black";
 
 const tooltipClass =
-  "pointer-events-none absolute top-full left-1/2 z-20 mt-2 flex -translate-x-1/2 flex-col items-center gap-0.5 whitespace-nowrap rounded-md bg-slate-800 px-2.5 py-1.5 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100 dark:bg-stone-700 print:hidden";
+  "pointer-events-none absolute top-full left-1/2 z-20 mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-slate-800 px-2.5 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100 dark:bg-stone-700 print:hidden";
 ---
 
 {href ? (
@@ -54,7 +52,7 @@ const tooltipClass =
     class:list={["group relative", iconButtonClass]}
     role="img"
     aria-label={ariaLabel}
-    tabindex={tooltipLines.length > 0 ? 0 : undefined}
+    tabindex={tooltip ? 0 : undefined}
   >
     <svg
       class="size-5"
@@ -70,11 +68,9 @@ const tooltipClass =
       <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
       <circle cx="12" cy="10" r="3" />
     </svg>
-    {tooltipLines.length > 0 && (
+    {tooltip && (
       <span class={tooltipClass} role="tooltip">
-        {tooltipLines.map((line, index) => (
-          <span class:list={[index > 0 && "font-normal text-white/80"]}>{line}</span>
-        ))}
+        {tooltip}
       </span>
     )}
   </span>
