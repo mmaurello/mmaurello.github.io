@@ -77,9 +77,15 @@ export interface RecentWorkEntry {
   gallery: RecentWorkImage[];
 }
 
+export interface ResumeSummaries {
+  general: string;
+  web3: string;
+}
+
 export interface Resume {
   header: Header;
   summary: string;
+  summaries: ResumeSummaries;
   experience: ExperienceEntry[];
   previousExperience?: ExperienceEntry[];
   education: EducationEntry[];
@@ -104,6 +110,12 @@ export const resumePdf = {
   download: "Mario_Jose_Maurello_Resume.pdf",
 } as const;
 
+export const summaries: ResumeSummaries = {
+  general:
+    "Full-Stack Engineer with 8+ years building and shipping production web applications across React, TypeScript, PHP, and AWS. Strong end-to-end ownership across frontend, APIs, CI/CD, and cloud infrastructure. Recent work includes production client apps and developer SDKs with high reliability requirements, which is experience that transfers well to any product-focused engineering team.",
+  web3: "Full-Stack Engineer with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on work across frontend, on-chain integrations, CI/CD, and cloud infrastructure.",
+};
+
 export const resume: Resume = {
   header: {
     name: "Mario Jose Maurello",
@@ -114,8 +126,8 @@ export const resume: Resume = {
       { label: "GitHub", url: "https://github.com/mmaurello" },
     ],
   },
-  summary:
-    "Full-Stack Engineer specializing in web applications, with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Currently focused on Web3 and dApps. Recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on implementation across frontend, on-chain integrations, CI/CD, and cloud infrastructure.",
+  summaries,
+  summary: summaries.general,
   experience: [
     {
       role: "Software Engineer — Web3 Developer",
@@ -293,18 +305,20 @@ export const resume: Resume = {
     },
     {
       category: "Cloud & Tooling",
-      items: [ "AWS", "GCP",  "GH Actions", "Docker", "Playwright", "Vitest", "Jest", "Postman"],
+      items: [
+        "AWS",
+        "GCP",
+        "GH Actions",
+        "Docker",
+        "Playwright",
+        "Vitest",
+        "Jest",
+        "Postman",
+      ],
     },
     {
       category: "Collaboration",
-      items: [
-        "GitHub",
-        "GitLab",
-        "Jira",
-        "Confluence",
-        "Notion",
-        "Figma",
-      ],
+      items: ["GitHub", "GitLab", "Jira", "Confluence", "Notion", "Figma"],
     },
   ],
   certifications: [
