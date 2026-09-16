@@ -113,9 +113,8 @@ export const resumePdf = {
 
 export const summaries: ResumeSummaries = {
   general:
-    "Full-Stack Engineer with 8+ years building and shipping production web applications across React, TypeScript, PHP, and AWS. Strong end-to-end ownership across frontend, APIs, CI/CD, and cloud infrastructure, and experience leading a cross-functional team of 6 (developers and QA) through agile delivery. Recent work includes production client apps and developer SDKs with high reliability requirements—experience that transfers well to any product-focused engineering team.",
-  web3:
-    "Full-Stack Engineer with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on work across frontend, on-chain integrations, CI/CD, and cloud infrastructure. Also brings experience leading a cross-functional team of 6 through agile product delivery.",
+    "Full-Stack Engineer with 8+ years building and shipping production web applications across React, TypeScript, PHP, and AWS. Strong end-to-end ownership across frontend, APIs, CI/CD, and cloud infrastructure, and experience leading a cross-functional team of 6 (developers and QA) through agile delivery. Recent work includes production client apps and developer SDKs with high reliability requirements, which is experience that transfers well to any product-focused engineering team.",
+  web3: "Full-Stack Engineer with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on work across frontend, on-chain integrations, CI/CD, and cloud infrastructure. Also brings experience leading a cross-functional team of 6 through agile product delivery.",
 };
 
 export const resume: Resume = {
@@ -133,29 +132,29 @@ export const resume: Resume = {
   summary: summaries.general,
   experience: [
     {
-      role: "Software Engineer — Web3 Developer",
+      role: "Software Engineer",
       company: "Opslayer",
       location: "Madrid · Remote",
       startDate: "June 2023",
       endDate: "Present",
       highlights: [
-        "Owned development of both Polkadot/Substrate-based and EVM-based dApps, integrating Web3 wallets and on-chain data analytics.",
-        "Integrated and maintained dApps with Polkadot.js API for interacting with Substrate-based blockchains, enabling real-time querying of on-chain data and transaction signing.",
-        "Built bridging SDKs to facilitate seamless token transfers across EVM-compatible chains and Substrate chain, removing the complexity for users of interacting with smart contract and Substrate interfaces.",
+        "Owned end-to-end development of production web apps in React and TypeScript, covering complex client integrations, real-time data flows, and analytics surfaces.",
+        "Built bridging SDKs that abstracted multi-system integrations for consuming teams, reducing integration complexity and improving developer experience.",
+        "Shipped wallet-connected product features and on-chain data querying across Polkadot/Substrate and EVM ecosystems.",
         "Implemented CI/CD pipelines with GitHub Actions, improving deployment reliability and reducing downtime.",
-        "Provided ongoing infrastructure support via AWS, achieving 99.9% service uptime.",
+        "Operated and supported AWS infrastructure, maintaining 99.9% service uptime.",
       ],
       skills: [
         "React",
         "TypeScript",
         "Next.js",
+        "AWS",
+        "GitHub Actions",
         "Polkadot.js",
         "Wagmi",
         "Ethers.js",
         "Viem",
         "Solidity",
-        "GitHub Actions",
-        "AWS",
       ],
     },
     {
@@ -165,11 +164,19 @@ export const resume: Resume = {
       startDate: "October 2021",
       endDate: "June 2023",
       highlights: [
-        "Developed and maintained decentralized applications (dApps) using React, Ethers.js, Viem, Wagmi, and interactions with Solidity contracts.",
-        "Designed and maintained SDKs for blockchain bridging, resulting in improved developer integration in the Polkadot ecosystem.",
-        "Migrated web apps infrastructure to AWS server-less services, reducing deployment times and complexity.",
+        "Built and maintained production React applications with complex third-party and contract integrations.",
+        "Designed and maintained bridging SDKs that improved developer adoption and integration speed for partner teams.",
+        "Migrated web app infrastructure to AWS serverless services, reducing deployment times and operational complexity.",
       ],
-      skills: ["React", "TypeScript", "Ethers.js", "Viem", "Wagmi", "Solidity", "AWS"],
+      skills: [
+        "React",
+        "TypeScript",
+        "AWS",
+        "Ethers.js",
+        "Viem",
+        "Wagmi",
+        "Solidity",
+      ],
     },
     {
       role: "Full Stack Developer",
@@ -283,11 +290,12 @@ export const resume: Resume = {
       category: "Core Skills",
       variant: "list",
       items: [
-        "Web development and hosting",
-        "Web3 development in Polkadot and EVM ecosystems",
-        "Service integrations (REST APIs, JSON-RPC, WebSockets, SDKs)",
+        "Full-stack web application development and hosting",
+        "Service integrations (REST APIs, WebSockets, SDKs)",
         "CI/CD pipelines, automated testing, and QA",
-        "Agile project management (Scrum, Kanban)",
+        "Cloud infrastructure and deployment automation (AWS)",
+        "Agile delivery and cross-functional collaboration",
+        "Domain experience in Web3 / dApps (Polkadot and EVM)",
       ],
     },
     {
@@ -295,16 +303,8 @@ export const resume: Resume = {
       items: ["TypeScript", "React", "Next.js", "Astro"],
     },
     {
-      category: "Web3",
-      items: ["Polkadot.js", "Wagmi", "Ethers.js", "Viem", "Solidity"],
-    },
-    {
       category: "Backend",
       items: ["Node.js", "PHP", "Symfony", "Laravel"],
-    },
-    {
-      category: "Data",
-      items: ["MySQL", "SQL Server", "PostgreSQL", "DynamoDB", "Drizzle", "Supabase"],
     },
     {
       category: "Cloud & Tooling",
@@ -318,6 +318,14 @@ export const resume: Resume = {
         "Jest",
         "Postman",
       ],
+    },
+    {
+      category: "Data",
+      items: ["MySQL", "SQL Server", "PostgreSQL", "DynamoDB", "Drizzle", "Supabase"],
+    },
+    {
+      category: "Web3",
+      items: ["Polkadot.js", "Wagmi", "Ethers.js", "Viem", "Solidity"],
     },
     {
       category: "Collaboration",
