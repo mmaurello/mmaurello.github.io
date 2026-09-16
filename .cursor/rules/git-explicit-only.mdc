@@ -1,0 +1,15 @@
+---
+description: Only commit or create PRs when the user explicitly asks
+alwaysApply: true
+---
+
+# Git: explicit request only
+
+Never create a git commit or a pull request unless the user explicitly asks for it in the current message.
+
+- Do **not** commit after finishing a task “because the work is done”
+- Do **not** open a PR after pushing or finishing a feature unless asked
+- Do **not** ask “should I commit?” unprompted after every change — wait for an explicit request
+- If the request is ambiguous (e.g. “ship it”, “wrap up”), ask whether they want a commit and/or a PR before doing either
+
+Allowed without an extra ask: read-only git commands (`status`, `diff`, `log`) and other non-mutating inspection needed to do the work.
