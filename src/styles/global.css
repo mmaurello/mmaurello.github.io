@@ -71,7 +71,7 @@
 
 @media print {
   @page {
-    margin: 1.25cm;
+    margin: 1cm;
     size: A4;
   }
 
@@ -91,21 +91,42 @@
     color: #000;
   }
 
+  /* Force light surfaces even if dark class is present */
+  .dark,
+  .dark body,
+  body.dark {
+    --color-surface: #ffffff;
+    --color-surface-raised: #ffffff;
+    --color-surface-muted: #ffffff;
+    --color-border: #d1d5db;
+    --color-accent-light: #e5e7eb;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   #summary {
     break-after: avoid;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.35rem;
     border-bottom: none;
   }
 
   #experience {
     break-before: avoid;
     margin-top: 0;
-    padding-top: 0.5rem;
+    padding-top: 0.35rem;
     border-top: none;
   }
 
   #summary + #experience h2 {
     margin-top: 0;
+  }
+
+  #resume-header,
+  [id].rounded-xl {
+    box-shadow: none !important;
   }
 
   .header-accent__stroke {

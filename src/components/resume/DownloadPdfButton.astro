@@ -1,18 +1,20 @@
 ---
-import { resumePdf } from "../../data/resume";
+import { resumePdfs, type ResumeVariant } from "../../data/resume";
 
 interface Props {
   class?: string;
+  variant?: ResumeVariant;
 }
 
-const { class: className } = Astro.props;
+const { class: className, variant = "general" } = Astro.props;
+const pdf = resumePdfs[variant];
 ---
 
 <a
-  href={resumePdf.href}
-  download={resumePdf.download}
+  href={pdf.href}
+  download={pdf.download}
   class:list={["print:hidden", className]}
-  aria-label="Download resume as PDF"
+  aria-label={`Download ${pdf.label} resume as PDF`}
 >
   <svg
     class="size-3.5 shrink-0"

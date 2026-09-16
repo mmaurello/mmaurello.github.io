@@ -83,6 +83,24 @@ export interface ResumeSummaries {
   web3: string;
 }
 
+export type ResumeVariant = keyof ResumeSummaries;
+
+export const RESUME_VARIANTS: ResumeVariant[] = ["general", "web3"];
+
+export function isResumeVariant(value: string | null | undefined): value is ResumeVariant {
+  return value === "general" || value === "web3";
+}
+
+export function parseResumeVariant(value: string | null | undefined): ResumeVariant {
+  return isResumeVariant(value) ? value : "general";
+}
+
+export interface ResumePdfMeta {
+  href: string;
+  download: string;
+  label: string;
+}
+
 export interface Resume {
   header: Header;
   summary: string;
@@ -105,31 +123,40 @@ export const sectionNav: SectionNavLink[] = [
   { label: "Recent Work", id: "recent-work" },
 ];
 
-/** Static resume PDF in /public — update when resume content changes. */
-export const resumePdf = {
-  href: "/CV_MJM_2026.pdf",
-  download: "Mario_Jose_Maurello_Resume.pdf",
-} as const;
+/** Static resume PDFs in /public — regenerate with `pnpm pdf` after content changes. */
+export const resumePdfs: Record<ResumeVariant, ResumePdfMeta> = {
+  general: {
+    href: "/CV_MJM_full-stack.pdf",
+    download: "Mario_Jose_Maurello_Resume.pdf",
+    label: "Full-stack",
+  },
+  web3: {
+    href: "/CV_MJM_web3.pdf",
+    download: "Mario_Jose_Maurello_Resume_Web3.pdf",
+    label: "Web3",
+  },
+};
 
 export const summaries: ResumeSummaries = {
   general:
     "Full-Stack Engineer with 8+ years building and shipping production web applications across React, TypeScript, PHP, and AWS. Strong end-to-end ownership across frontend, APIs, CI/CD, and cloud infrastructure, and experience leading a cross-functional team of 6 (developers and QA) through agile delivery. Recent work includes production client apps and developer SDKs with high reliability requirements, which is experience that transfers well to any product-focused engineering team.",
-  web3: "Full-Stack Engineer with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on work across frontend, on-chain integrations, CI/CD, and cloud infrastructure. Also brings experience leading a cross-functional team of 6 through agile product delivery.",
+  web3:
+    "Full-Stack Engineer with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on work across frontend, on-chain integrations, CI/CD, and cloud infrastructure. Also brings experience leading a cross-functional team of 6 through agile product delivery.",
 };
 
-export const resume: Resume = {
+const resumeBase: Omit<Resume, "summary"> = {
   header: {
     name: "Mario Jose Maurello",
     title: "Full-Stack Software Engineer",
     location: "Madrid, Spain",
     workAuthorization: "Eligible to work in the EU",
     links: [
+      { label: "Site", url: "https://mjmaurello.dev" },
       { label: "LinkedIn", url: "https://www.linkedin.com/in/mariojmaurello" },
       { label: "GitHub", url: "https://github.com/mmaurello" },
     ],
   },
   summaries,
-  summary: summaries.general,
   experience: [
     {
       role: "Software Engineer",
@@ -386,3 +413,13 @@ export const resume: Resume = {
     },
   ],
 };
+
+export function getResume(variant: ResumeVariant = "general"): Resume {
+  return {
+    ...resumeBase,
+    summary: summaries[variant],
+  };
+}
+
+/** Default public resume (general / full-stack summary). */
+export const resume: Resume = getResume("general");
