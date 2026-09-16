@@ -1,7 +1,7 @@
 ---
 description: Resume content and PDF generation — single source of truth and print pipeline
 globs: src/data/resume.ts,src/data/print-resume.ts,src/components/resume/**,src/components/print/**,src/pages/**,src/layouts/PrintLayout.astro,src/styles/print.css,scripts/generate-pdfs.ts,public/CV_MJM*.pdf
-alwaysApply: true
+alwaysApply: false
 ---
 
 # Resume & PDF workflow
