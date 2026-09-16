@@ -17,6 +17,7 @@ export interface Header {
   name: string;
   title: string;
   location: string;
+  workAuthorization?: string;
   links: ContactLink[];
 }
 
@@ -121,6 +122,7 @@ export const resume: Resume = {
     name: "Mario Jose Maurello",
     title: "Full-Stack Software Engineer",
     location: "Madrid, Spain",
+    workAuthorization: "Eligible to work in the EU",
     links: [
       { label: "LinkedIn", url: "https://www.linkedin.com/in/mariojmaurello" },
       { label: "GitHub", url: "https://github.com/mmaurello" },

@@ -17,6 +17,9 @@ function findLink(label: string) {
 
 const linkedInLink = findLink("LinkedIn");
 const githubLink = findLink("GitHub");
+const locationLine = [header.location, header.workAuthorization]
+  .filter(Boolean)
+  .join(" · ");
 
 const chipBase =
   "inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-800 no-underline transition-colors hover:border-accent hover:text-accent dark:border-border dark:bg-surface-muted dark:text-stone-200 print:border-gray-300 print:bg-transparent print:text-black print:no-underline";
@@ -54,12 +57,15 @@ const contactCta =
       <p class="mt-1 text-lg font-medium text-accent print:text-black">
         {header.title}
       </p>
+      <p class="mt-1.5 hidden text-sm text-slate-600 print:mt-1 print:block print:text-black">
+        {locationLine}
+      </p>
     </div>
     <div class="flex shrink-0 items-start gap-2">
       <HeaderIconTooltip
         kind="location"
-        ariaLabel={`Location: ${header.location}`}
-        tooltip={header.location}
+        ariaLabel={`Location: ${locationLine}`}
+        tooltip={locationLine}
       />
       {linkedInLink && (
         <HeaderIconTooltip
