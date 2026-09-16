@@ -138,7 +138,7 @@ export const resume: Resume = {
       startDate: "June 2023",
       endDate: "Present",
       highlights: [
-        "Owned end-to-end development of production web apps in React and TypeScript, covering complex client integrations, real-time data flows, and analytics surfaces.",
+        "Owned end-to-end development of production React/TypeScript apps for Web3 products, including wallet connectivity, cross-chain bridging, and on-chain analytics.",
         "Built bridging SDKs that abstracted multi-system integrations for consuming teams, reducing integration complexity and improving developer experience.",
         "Shipped wallet-connected product features and on-chain data querying across Polkadot/Substrate and EVM ecosystems.",
         "Implemented CI/CD pipelines with GitHub Actions, improving deployment reliability and reducing downtime.",
@@ -165,18 +165,10 @@ export const resume: Resume = {
       endDate: "June 2023",
       highlights: [
         "Built and maintained production React applications with complex third-party and contract integrations.",
-        "Designed and maintained bridging SDKs that improved developer adoption and integration speed for partner teams.",
+        "Designed and maintained blockchain bridging SDKs that improved developer adoption and integration speed for partner teams.",
         "Migrated web app infrastructure to AWS serverless services, reducing deployment times and operational complexity.",
       ],
-      skills: [
-        "React",
-        "TypeScript",
-        "AWS",
-        "Ethers.js",
-        "Viem",
-        "Wagmi",
-        "Solidity",
-      ],
+      skills: ["React", "TypeScript", "AWS", "Ethers.js", "Viem", "Wagmi", "Solidity"],
     },
     {
       role: "Full Stack Developer",
