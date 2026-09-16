@@ -1,0 +1,34 @@
+---
+description: Resume content and PDF generation — single source of truth and print pipeline
+globs: src/data/resume.ts,src/data/print-resume.ts,src/components/resume/**,src/components/print/**,src/pages/**,src/layouts/PrintLayout.astro,src/styles/print.css,scripts/generate-pdfs.ts,public/CV_MJM*.pdf
+alwaysApply: true
+---
+
+# Resume & PDF workflow
+
+## Source of truth
+
+- **`src/data/resume.ts`** is the only content source (experience, summary variants, skills, education, etc.).
+- Edit resume content there. Do not duplicate job bullets or summaries elsewhere.
+- **`src/data/print-resume.ts`** only *reshapes* that data for PDFs (shorter dates, earlier-role one-liners, bullet caps, layout-oriented structures). Prefer transforming existing fields over inventing new prose.
+
+## Site vs PDF
+
+| Surface | Routes | Layout |
+|---|---|---|
+| Public site (rich) | `/`, `/web3` | `ResumePage` + resume components |
+| PDF template (compact) | `/print`, `/print/web3` | `PrintLayout` + `PrintResume` |
+
+- Summary variant: `general` on `/` and `/print`; `web3` on `/web3` and `/print/web3`.
+- `/print*` is for PDF generation only (`noindex`, excluded from sitemap). Do not link it in the public UI or document it as a visitor feature.
+- Site and PDF may differ in *presentation* (density, one-liners, skills layout). Shared facts (roles, companies, dates, merged Imaweb block) stay in `resume.ts`.
+
+## After content changes
+
+When experience, summary, skills, or other resume facts change in a way that should appear in application PDFs:
+
+1. Update `src/data/resume.ts` (and `print-resume.ts` only if the reshape logic must change).
+2. Run `pnpm pdf` to regenerate `public/CV_MJM_full-stack.pdf` and `public/CV_MJM_web3.pdf`.
+3. Include the regenerated PDFs in the same change set when shipping content updates.
+
+Download buttons serve those static files by variant (`resumePdfs` in `resume.ts`), not live print of the public pages.
