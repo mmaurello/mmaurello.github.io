@@ -43,6 +43,13 @@ const {
             <p class="mt-0.5 text-sm text-slate-500 dark:text-stone-400 print:text-black">
               {job.company} · {job.location}
             </p>
+            {job.roles && job.roles.length > 0 && (
+              <p class="mt-1 text-xs leading-snug text-slate-500 dark:text-stone-400">
+                {job.roles
+                  .map((role) => `${role.role} (${role.startDate} – ${role.endDate})`)
+                  .join(" · ")}
+              </p>
+            )}
           </div>
           <p class="m-0 text-sm font-medium whitespace-nowrap text-accent print:text-black">
             {job.startDate} – {job.endDate}

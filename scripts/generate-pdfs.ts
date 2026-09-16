@@ -18,12 +18,12 @@ interface PdfVariant {
 
 const variants: PdfVariant[] = [
   {
-    path: "/",
+    path: "/print",
     file: "CV_MJM_full-stack.pdf",
     label: "Full-stack",
   },
   {
-    path: "/web3",
+    path: "/print/web3",
     file: "CV_MJM_web3.pdf",
     label: "Web3",
   },
@@ -78,33 +78,19 @@ async function generatePdfs(): Promise<void> {
 
     browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
-
-    // Ensure reveal animations are visible without relying on beforeprint.
     await page.emulateMedia({ media: "print", colorScheme: "light" });
 
     for (const variant of variants) {
       const url = `${baseUrl}${variant.path}`;
       console.log(`Generating ${variant.label} PDF from ${url}`);
       await page.goto(url, { waitUntil: "networkidle" });
-      await page.evaluate(() => {
-        for (const el of document.querySelectorAll(".reveal")) {
-          el.classList.add("is-visible");
-        }
-        document.documentElement.classList.remove("dark");
-        document.body?.classList.remove("dark");
-      });
 
       const outPath = path.join(publicDir, variant.file);
+      // Page size and margins come from `@page` in src/styles/print.css.
       await page.pdf({
         path: outPath,
-        format: "A4",
         printBackground: true,
-        margin: {
-          top: "0.8cm",
-          right: "0.8cm",
-          bottom: "0.8cm",
-          left: "0.8cm",
-        },
+        preferCSSPageSize: true,
       });
       console.log(`Wrote ${outPath}`);
     }

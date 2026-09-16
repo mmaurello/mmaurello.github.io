@@ -1,0 +1,9 @@
+---
+import PrintResume from "../../components/print/PrintResume.astro";
+import { resume } from "../../data/resume";
+import PrintLayout from "../../layouts/PrintLayout.astro";
+---
+
+<PrintLayout title={`${resume.header.name} — Resume (Web3)`}>
+  <PrintResume variant="web3" />
+</PrintLayout>

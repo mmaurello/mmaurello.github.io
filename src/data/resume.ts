@@ -21,12 +21,20 @@ export interface Header {
   links: ContactLink[];
 }
 
+export interface ExperienceRole {
+  role: string;
+  startDate: string;
+  endDate: string;
+}
+
 export interface ExperienceEntry {
   role: string;
   company: string;
   location: string;
   startDate: string;
   endDate: string;
+  /** Role progression when several roles at one company are merged. */
+  roles?: ExperienceRole[];
   highlights: string[];
   skills?: string[];
 }
@@ -211,55 +219,40 @@ const resumeBase: Omit<Resume, "summary"> = {
       skills: ["PHP", "Symfony", "SQL Server", "REST APIs"],
     },
     {
-      role: "Project Manager",
-      company: "Imaweb",
-      location: "Madrid",
-      startDate: "December 2019",
-      endDate: "March 2021",
-      highlights: [
-        "Managed a cross-functional team of 4 developers and 2 QA testers in the agile development of CRM solutions for automotive clients.",
-        "Delivered 20+ project releases on time and within budget, improving customer satisfaction scores by 25%.",
-        "Acted as primary liaison between clients and technical teams, translating business needs into functional requirements.",
-        "Introduced sprint retrospectives and kanban boards, leading to a 15% productivity increase.",
-      ],
-    },
-    {
-      role: "Project Leader",
-      company: "Imaweb",
-      location: "Madrid",
-      startDate: "July 2019",
-      endDate: "December 2019",
-      highlights: [
-        "Supervised development of custom modules for automotive CRMs, reducing feature request backlog.",
-        "Mentored junior developer and QA tester, resulting in quicker onboarding and quality improvements.",
-        "Ensured adherence to deadlines and code quality standards during high-priority client rollouts.",
-      ],
-      skills: ["PHP", "MySQL", "Agile", "Jira"],
-    },
-    {
-      role: "Full Stack Developer",
-      company: "Imaweb",
-      location: "Madrid",
-      startDate: "August 2017",
-      endDate: "July 2019",
-      highlights: [
-        "Built core modules for a CRM platform used by over 500 car dealerships across Europe.",
-        "Integrated third-party systems using REST/SOAP APIs, enhancing data flow across platforms.",
-        "Wrote backend services in PHP, managing relational data in MySQL and performance tuning SQL queries.",
-      ],
-      skills: ["PHP", "MySQL", "REST APIs", "SOAP"],
-    },
-    {
-      role: "SQA Developer",
+      role: "Project Manager / Full Stack Developer",
       company: "Imaweb",
       location: "Madrid",
       startDate: "February 2017",
-      endDate: "August 2017",
-      highlights: [
-        "Refactored legacy PHP code and optimized MySQL queries, reducing page load times by up to 60%.",
-        "Collaborated with development teams to triage and resolve bugs reported from production.",
+      endDate: "March 2021",
+      roles: [
+        {
+          role: "Project Manager",
+          startDate: "December 2019",
+          endDate: "March 2021",
+        },
+        {
+          role: "Project Leader",
+          startDate: "July 2019",
+          endDate: "December 2019",
+        },
+        {
+          role: "Full Stack Developer",
+          startDate: "August 2017",
+          endDate: "July 2019",
+        },
+        {
+          role: "SQA Developer",
+          startDate: "February 2017",
+          endDate: "August 2017",
+        },
       ],
-      skills: ["PHP", "MySQL"],
+      highlights: [
+        "Progressed from SQA Developer to Full Stack Developer, Project Leader, and Project Manager on automotive CRM products.",
+        "Managed a cross-functional team of 4 developers and 2 QA testers; delivered 20+ releases on time and improved customer satisfaction by 25%.",
+        "Built core CRM modules used by 500+ European car dealerships; integrated REST/SOAP APIs and tuned MySQL performance.",
+        "Refactored legacy PHP and optimized queries, reducing page load times by up to 60%.",
+      ],
+      skills: ["PHP", "MySQL", "Agile", "Jira", "REST APIs"],
     },
   ],
   previousExperience: [
