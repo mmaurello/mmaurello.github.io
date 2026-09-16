@@ -213,7 +213,7 @@ export const resume: Resume = {
       role: "Full Stack Developer",
       company: "Imaweb",
       location: "Madrid",
-      startDate: "August 2018",
+      startDate: "August 2017",
       endDate: "July 2019",
       highlights: [
         "Built core modules for a CRM platform used by over 500 car dealerships across Europe.",
@@ -226,8 +226,8 @@ export const resume: Resume = {
       role: "SQA Developer",
       company: "Imaweb",
       location: "Madrid",
-      startDate: "August 2018",
-      endDate: "July 2019",
+      startDate: "February 2017",
+      endDate: "August 2017",
       highlights: [
         "Refactored legacy PHP code and optimized MySQL queries, reducing page load times by up to 60%.",
         "Collaborated with development teams to triage and resolve bugs reported from production.",
