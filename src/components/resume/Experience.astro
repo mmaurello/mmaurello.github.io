@@ -31,7 +31,7 @@ const {
         ]}
       >
         <div class="mb-3 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between print:mb-1.5">
-          <div>
+          <div class="min-w-0">
             <h3
               class:list={[
                 "m-0 font-semibold text-slate-800 dark:text-stone-100",
@@ -43,18 +43,25 @@ const {
             <p class="mt-0.5 text-sm text-slate-500 dark:text-stone-400 print:text-black">
               {job.company} · {job.location}
             </p>
-            {job.roles && job.roles.length > 0 && (
-              <p class="mt-1 text-xs leading-snug text-slate-500 dark:text-stone-400">
-                {job.roles
-                  .map((role) => `${role.role} (${role.startDate} – ${role.endDate})`)
-                  .join(" · ")}
-              </p>
-            )}
           </div>
-          <p class="m-0 text-sm font-medium whitespace-nowrap text-accent print:text-black">
+          <p class="m-0 shrink-0 text-sm font-medium whitespace-nowrap text-accent print:text-black">
             {job.startDate} – {job.endDate}
           </p>
         </div>
+        {job.roles && job.roles.length > 0 && (
+          <ul class="m-0 mb-3 list-none p-0 text-xs leading-relaxed text-slate-500 dark:text-stone-400 print:mb-1.5 print:text-black">
+            {job.roles.map((role) => (
+              <li>
+                <span class="font-medium text-slate-700 dark:text-stone-400 print:text-black">
+                  {role.role}
+                </span>
+                <span class="text-slate-500 dark:text-stone-500 print:text-black">
+                  {" "}({role.startDate} – {role.endDate})
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
         {!compact && (
           <>
             <ul class="m-0 flex list-disc flex-col gap-1.5 pl-5 print:gap-1">

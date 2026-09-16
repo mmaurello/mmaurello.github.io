@@ -20,7 +20,7 @@ export interface PrintExperienceEntry {
   company: string;
   location: string;
   dates: string;
-  progression?: string;
+  progression?: { role: string; dates: string }[];
   highlights: string[];
 }
 
@@ -72,9 +72,10 @@ function toPrintExperience(entry: ExperienceEntry): PrintExperienceEntry {
     company: entry.company,
     location: entry.location,
     dates: formatRange(entry.startDate, entry.endDate),
-    progression: entry.roles
-      ?.map((role) => `${role.role} (${formatRange(role.startDate, role.endDate)})`)
-      .join(" · "),
+    progression: entry.roles?.map((role) => ({
+      role: role.role,
+      dates: formatRange(role.startDate, role.endDate),
+    })),
     highlights: printHighlights(entry.highlights),
   };
 }

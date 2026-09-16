@@ -54,8 +54,15 @@ const sectionHeading =
             <span class="shrink-0 text-[8.5pt] whitespace-nowrap">{job.dates}</span>
           </div>
           <p class="m-0 text-[8.5pt] text-gray-700">{job.location}</p>
-          {job.progression && (
-            <p class="m-0 mt-0.5 text-[8pt] text-gray-700">{job.progression}</p>
+          {job.progression && job.progression.length > 0 && (
+            <ul class="m-0 mt-1 list-none p-0 text-[8pt] text-gray-700">
+              {job.progression.map((role) => (
+                <li>
+                  <span class="font-medium">{role.role}</span>
+                  <span class="text-gray-600"> ({role.dates})</span>
+                </li>
+              ))}
+            </ul>
           )}
           <ul class="m-0 mt-1 flex list-disc flex-col gap-0.5 pl-4">
             {job.highlights.map((highlight) => (
