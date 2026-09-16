@@ -1,5 +1,5 @@
 ---
-import type { Header } from "../../data/resume";
+import type { Header, ResumeVariant } from "../../data/resume";
 import { HEADER_SHADER_ENABLED } from "../../lib/header-shader";
 import DownloadPdfButton from "./DownloadPdfButton.astro";
 import HeaderAccent from "./HeaderAccent.astro";
@@ -7,14 +7,16 @@ import HeaderIconTooltip from "./HeaderIconTooltip.astro";
 
 interface Props {
   header: Header;
+  variant?: ResumeVariant;
 }
 
-const { header } = Astro.props;
+const { header, variant = "general" } = Astro.props;
 
 function findLink(label: string) {
   return header.links.find((link) => link.label.toLowerCase() === label.toLowerCase());
 }
 
+const siteLink = findLink("Site");
 const linkedInLink = findLink("LinkedIn");
 const githubLink = findLink("GitHub");
 const locationLine = [header.location, header.workAuthorization]
@@ -30,7 +32,7 @@ const contactCta =
 
 <header
   id="resume-header"
-  class="reveal relative isolate flex flex-col gap-4 rounded-xl border border-slate-200 p-6 shadow-sm sm:p-7 dark:border-border print:translate-none print:opacity-100 print:transition-none print:gap-2 print:rounded-none print:border-gray-300 print:p-3 print:shadow-none print:break-after-avoid"
+  class="reveal relative isolate flex flex-col gap-4 rounded-xl border border-slate-200 p-6 shadow-sm sm:p-7 dark:border-border print:translate-none print:opacity-100 print:transition-none print:gap-1 print:rounded-none print:border-0 print:border-b print:border-gray-300 print:p-2 print:shadow-none print:break-after-avoid"
 >
   <div
     class="absolute inset-0 overflow-hidden rounded-xl bg-white dark:bg-surface-raised print:bg-white"
@@ -60,8 +62,13 @@ const contactCta =
       <p class="mt-1.5 hidden text-sm text-slate-600 print:mt-1 print:block print:text-black">
         {locationLine}
       </p>
+      <p class="mt-1 hidden text-xs leading-relaxed text-slate-600 print:block print:text-black">
+        {siteLink && siteLink.url}
+        {linkedInLink && ` · ${linkedInLink.url}`}
+        {githubLink && ` · ${githubLink.url}`}
+      </p>
     </div>
-    <div class="flex shrink-0 items-start gap-2">
+    <div class="flex shrink-0 items-start gap-2 print:hidden">
       <HeaderIconTooltip
         kind="location"
         ariaLabel={`Location: ${locationLine}`}
@@ -84,7 +91,7 @@ const contactCta =
     </div>
   </div>
   <div class="relative z-10 flex justify-end gap-2 print:hidden">
-    <DownloadPdfButton class={chipBase} />
+    <DownloadPdfButton class={chipBase} variant={variant} />
     <a href="#contact" data-smooth-section class={contactCta}>Contact</a>
   </div>
 </header>

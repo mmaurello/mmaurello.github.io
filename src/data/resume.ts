@@ -21,12 +21,20 @@ export interface Header {
   links: ContactLink[];
 }
 
+export interface ExperienceRole {
+  role: string;
+  startDate: string;
+  endDate: string;
+}
+
 export interface ExperienceEntry {
   role: string;
   company: string;
   location: string;
   startDate: string;
   endDate: string;
+  /** Role progression when several roles at one company are merged. */
+  roles?: ExperienceRole[];
   highlights: string[];
   skills?: string[];
 }
@@ -83,6 +91,24 @@ export interface ResumeSummaries {
   web3: string;
 }
 
+export type ResumeVariant = keyof ResumeSummaries;
+
+export const RESUME_VARIANTS: ResumeVariant[] = ["general", "web3"];
+
+export function isResumeVariant(value: string | null | undefined): value is ResumeVariant {
+  return value === "general" || value === "web3";
+}
+
+export function parseResumeVariant(value: string | null | undefined): ResumeVariant {
+  return isResumeVariant(value) ? value : "general";
+}
+
+export interface ResumePdfMeta {
+  href: string;
+  download: string;
+  label: string;
+}
+
 export interface Resume {
   header: Header;
   summary: string;
@@ -105,31 +131,40 @@ export const sectionNav: SectionNavLink[] = [
   { label: "Recent Work", id: "recent-work" },
 ];
 
-/** Static resume PDF in /public — update when resume content changes. */
-export const resumePdf = {
-  href: "/CV_MJM_2026.pdf",
-  download: "Mario_Jose_Maurello_Resume.pdf",
-} as const;
+/** Static resume PDFs in /public — regenerate with `pnpm pdf` after content changes. */
+export const resumePdfs: Record<ResumeVariant, ResumePdfMeta> = {
+  general: {
+    href: "/CV_MJM_full-stack.pdf",
+    download: "Mario_Jose_Maurello_Resume.pdf",
+    label: "Full-stack",
+  },
+  web3: {
+    href: "/CV_MJM_web3.pdf",
+    download: "Mario_Jose_Maurello_Resume_Web3.pdf",
+    label: "Web3",
+  },
+};
 
 export const summaries: ResumeSummaries = {
   general:
     "Full-Stack Engineer with 8+ years building and shipping production web applications across React, TypeScript, PHP, and AWS. Strong end-to-end ownership across frontend, APIs, CI/CD, and cloud infrastructure, and experience leading a cross-functional team of 6 (developers and QA) through agile delivery. Recent work includes production client apps and developer SDKs with high reliability requirements, which is experience that transfers well to any product-focused engineering team.",
-  web3: "Full-Stack Engineer with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on work across frontend, on-chain integrations, CI/CD, and cloud infrastructure. Also brings experience leading a cross-functional team of 6 through agile product delivery.",
+  web3:
+    "Full-Stack Engineer with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on work across frontend, on-chain integrations, CI/CD, and cloud infrastructure. Also brings experience leading a cross-functional team of 6 through agile product delivery.",
 };
 
-export const resume: Resume = {
+const resumeBase: Omit<Resume, "summary"> = {
   header: {
     name: "Mario Jose Maurello",
     title: "Full-Stack Software Engineer",
     location: "Madrid, Spain",
     workAuthorization: "Eligible to work in the EU",
     links: [
+      { label: "Site", url: "https://mjmaurello.dev" },
       { label: "LinkedIn", url: "https://www.linkedin.com/in/mariojmaurello" },
       { label: "GitHub", url: "https://github.com/mmaurello" },
     ],
   },
   summaries,
-  summary: summaries.general,
   experience: [
     {
       role: "Software Engineer",
@@ -184,55 +219,40 @@ export const resume: Resume = {
       skills: ["PHP", "Symfony", "SQL Server", "REST APIs"],
     },
     {
-      role: "Project Manager",
-      company: "Imaweb",
-      location: "Madrid",
-      startDate: "December 2019",
-      endDate: "March 2021",
-      highlights: [
-        "Managed a cross-functional team of 4 developers and 2 QA testers in the agile development of CRM solutions for automotive clients.",
-        "Delivered 20+ project releases on time and within budget, improving customer satisfaction scores by 25%.",
-        "Acted as primary liaison between clients and technical teams, translating business needs into functional requirements.",
-        "Introduced sprint retrospectives and kanban boards, leading to a 15% productivity increase.",
-      ],
-    },
-    {
-      role: "Project Leader",
-      company: "Imaweb",
-      location: "Madrid",
-      startDate: "July 2019",
-      endDate: "December 2019",
-      highlights: [
-        "Supervised development of custom modules for automotive CRMs, reducing feature request backlog.",
-        "Mentored junior developer and QA tester, resulting in quicker onboarding and quality improvements.",
-        "Ensured adherence to deadlines and code quality standards during high-priority client rollouts.",
-      ],
-      skills: ["PHP", "MySQL", "Agile", "Jira"],
-    },
-    {
-      role: "Full Stack Developer",
-      company: "Imaweb",
-      location: "Madrid",
-      startDate: "August 2017",
-      endDate: "July 2019",
-      highlights: [
-        "Built core modules for a CRM platform used by over 500 car dealerships across Europe.",
-        "Integrated third-party systems using REST/SOAP APIs, enhancing data flow across platforms.",
-        "Wrote backend services in PHP, managing relational data in MySQL and performance tuning SQL queries.",
-      ],
-      skills: ["PHP", "MySQL", "REST APIs", "SOAP"],
-    },
-    {
-      role: "SQA Developer",
+      role: "Project Manager / Full Stack Developer",
       company: "Imaweb",
       location: "Madrid",
       startDate: "February 2017",
-      endDate: "August 2017",
-      highlights: [
-        "Refactored legacy PHP code and optimized MySQL queries, reducing page load times by up to 60%.",
-        "Collaborated with development teams to triage and resolve bugs reported from production.",
+      endDate: "March 2021",
+      roles: [
+        {
+          role: "Project Manager",
+          startDate: "December 2019",
+          endDate: "March 2021",
+        },
+        {
+          role: "Project Leader",
+          startDate: "July 2019",
+          endDate: "December 2019",
+        },
+        {
+          role: "Full Stack Developer",
+          startDate: "August 2017",
+          endDate: "July 2019",
+        },
+        {
+          role: "SQA Developer",
+          startDate: "February 2017",
+          endDate: "August 2017",
+        },
       ],
-      skills: ["PHP", "MySQL"],
+      highlights: [
+        "Progressed from SQA Developer to Full Stack Developer, Project Leader, and Project Manager on automotive CRM products.",
+        "Managed a cross-functional team of 4 developers and 2 QA testers; delivered 20+ releases on time and improved customer satisfaction by 25%.",
+        "Built core CRM modules used by 500+ European car dealerships; integrated REST/SOAP APIs and tuned MySQL performance.",
+        "Refactored legacy PHP and optimized queries, reducing page load times by up to 60%.",
+      ],
+      skills: ["PHP", "MySQL", "Agile", "Jira", "REST APIs"],
     },
   ],
   previousExperience: [
@@ -386,3 +406,13 @@ export const resume: Resume = {
     },
   ],
 };
+
+export function getResume(variant: ResumeVariant = "general"): Resume {
+  return {
+    ...resumeBase,
+    summary: summaries[variant],
+  };
+}
+
+/** Default public resume (general / full-stack summary). */
+export const resume: Resume = getResume("general");

@@ -1,0 +1,58 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import type { ResumeVariant } from "../../data/resume";
+import { getResume, sectionNav } from "../../data/resume";
+import Certifications from "./Certifications.astro";
+import Contact from "./Contact.astro";
+import Education from "./Education.astro";
+import Experience from "./Experience.astro";
+import Header from "./Header.astro";
+import Languages from "./Languages.astro";
+import RecentWork from "./RecentWork.astro";
+import SectionNav from "./SectionNav.astro";
+import Skills from "./Skills.astro";
+import Summary from "./Summary.astro";
+
+interface Props {
+  variant?: ResumeVariant;
+}
+
+const { variant = "general" } = Astro.props;
+
+const {
+  header,
+  summary,
+  experience,
+  previousExperience,
+  education,
+  skills,
+  certifications,
+  languages,
+  recentWork,
+} = getResume(variant);
+
+const description =
+  variant === "web3"
+    ? `${header.name}, ${header.title} in ${header.location}. 8+ years building production web apps and Web3/dApps across React, TypeScript, PHP, and AWS.`
+    : `${header.name}, ${header.title} in ${header.location}. 8+ years building and shipping production web apps across React, TypeScript, PHP, and AWS.`;
+---
+
+<Layout title={`${header.name} — ${header.title}`} description={description}>
+  <Header header={header} variant={variant} />
+  <SectionNav links={sectionNav} />
+  <div class="flex flex-col gap-4 sm:gap-5 print:gap-0">
+    <Summary summary={summary} />
+    <Experience experience={experience} id="experience" class="print:border-t-0" />
+  </div>
+  {previousExperience && previousExperience.length > 0 && (
+    <Experience experience={previousExperience} title="Earlier Roles" compact id="earlier-roles" />
+  )}
+  <Education education={education} />
+  <Skills skills={skills} />
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 print:gap-2">
+    <Certifications certifications={certifications} />
+    <Languages languages={languages} />
+  </div>
+  <RecentWork items={recentWork} />
+  <Contact />
+</Layout>

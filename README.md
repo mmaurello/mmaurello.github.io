@@ -23,6 +23,27 @@ Update your name, experience, skills, and other sections there. No component cha
 
 Email and phone are intentionally omitted from the public resume. Use the **Contact** section at the bottom of the page instead.
 
+### Resume PDFs
+
+Application PDFs are generated from the site. After editing resume content:
+
+```sh
+pnpm pdf
+```
+
+This builds the site and writes:
+
+- `public/CV_MJM_full-stack.pdf`
+- `public/CV_MJM_web3.pdf`
+
+Commit those files so GitHub Pages can serve them. The header **PDF** control downloads the PDF for the current page (`/` → full-stack, `/web3` → Web3).
+
+First-time Playwright setup (browsers):
+
+```sh
+pnpm exec playwright install chromium
+```
+
 ## Contact form setup
 
 The contact form uses [Web3Forms](https://web3forms.com) to deliver messages to your personal inbox without exposing your email on the site.

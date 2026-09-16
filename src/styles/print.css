@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* PDF/print pages only — isolated from the public site styles. */
+
+@page {
+  size: A4;
+  margin: 0.9cm;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
