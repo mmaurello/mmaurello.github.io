@@ -113,8 +113,9 @@ export const resumePdf = {
 
 export const summaries: ResumeSummaries = {
   general:
-    "Full-Stack Engineer with 8+ years building and shipping production web applications across React, TypeScript, PHP, and AWS. Strong end-to-end ownership across frontend, APIs, CI/CD, and cloud infrastructure. Recent work includes production client apps and developer SDKs with high reliability requirements, which is experience that transfers well to any product-focused engineering team.",
-  web3: "Full-Stack Engineer with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on work across frontend, on-chain integrations, CI/CD, and cloud infrastructure.",
+    "Full-Stack Engineer with 8+ years building and shipping production web applications across React, TypeScript, PHP, and AWS. Strong end-to-end ownership across frontend, APIs, CI/CD, and cloud infrastructure, and experience leading a cross-functional team of 6 (developers and QA) through agile delivery. Recent work includes production client apps and developer SDKs with high reliability requirements—experience that transfers well to any product-focused engineering team.",
+  web3:
+    "Full-Stack Engineer with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on work across frontend, on-chain integrations, CI/CD, and cloud infrastructure. Also brings experience leading a cross-functional team of 6 through agile product delivery.",
 };
 
 export const resume: Resume = {
