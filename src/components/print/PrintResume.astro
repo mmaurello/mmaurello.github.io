@@ -16,20 +16,22 @@ function displayUrl(url: string) {
 
 const locationLine = [header.location, header.workAuthorization].filter(Boolean).join(" · ");
 const sectionHeading =
-  "mb-1.5 border-b border-gray-400 pb-0.5 text-[7.5pt] font-bold tracking-[0.12em] uppercase";
+  "mb-1.5 border-b border-print-accent pb-0.5 text-[7.5pt] font-bold tracking-[0.14em] text-print-accent uppercase";
 ---
 
-<article class="text-[9pt] leading-[1.35]">
-  <header class="mb-2.5">
-    <h1 class="m-0 text-[19pt] leading-tight font-bold tracking-tight">{header.name}</h1>
-    <p class="m-0 mt-0.5 text-[10.5pt] font-medium">{header.title}</p>
-    <p class="m-0 mt-1 text-[8.5pt]">{locationLine}</p>
-    <p class="m-0 mt-1.5 text-[8.5pt]">
+<article class="text-[9pt] leading-[1.38] text-print-ink">
+  <header class="mb-3 border-b border-print-rule pb-2.5">
+    <div class="mb-2 h-[3px] w-14 rounded-full bg-print-accent" aria-hidden="true"></div>
+    <h1 class="m-0 text-[20pt] leading-tight font-bold tracking-tight text-print-ink">
+      {header.name}
+    </h1>
+    <p class="m-0 mt-0.5 text-[11pt] font-semibold text-print-accent">{header.title}</p>
+    <p class="m-0 mt-1.5 text-[8.5pt] text-print-muted">{locationLine}</p>
+    <p class="m-0 mt-1 text-[8pt] text-print-muted">
       {header.links.map((link, index) => (
         <>
-          {index > 0 && <span> · </span>}
-          <span class="font-semibold">{link.label}:</span>{" "}
-          <a href={link.url} class="text-black underline underline-offset-2">
+          {index > 0 && <span class="text-print-rule"> · </span>}
+          <a href={link.url} class="text-print-accent no-underline">
             {displayUrl(link.url)}
           </a>
         </>
@@ -39,34 +41,37 @@ const sectionHeading =
 
   <section class="mb-2.5">
     <h2 class={sectionHeading}>Summary</h2>
-    <p class="m-0 text-justify">{summary}</p>
+    <p class="m-0 text-justify text-print-ink">{summary}</p>
   </section>
 
   <section class="mb-2.5">
     <h2 class={sectionHeading}>Experience</h2>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2.5">
       {experience.map((job) => (
         <div class="break-inside-avoid">
           <div class="flex items-baseline justify-between gap-3">
-            <h3 class="m-0 text-[10pt] font-semibold">
-              {job.role} <span class="font-normal">— {job.company}</span>
+            <h3 class="m-0 text-[10pt] font-semibold text-print-ink">
+              {job.role}
+              <span class="font-normal text-print-muted"> — {job.company}</span>
             </h3>
-            <span class="shrink-0 text-[8.5pt] whitespace-nowrap">{job.dates}</span>
+            <span class="shrink-0 text-[8.5pt] font-medium whitespace-nowrap text-print-accent">
+              {job.dates}
+            </span>
           </div>
-          <p class="m-0 text-[8.5pt] text-gray-700">{job.location}</p>
+          <p class="m-0 text-[8.5pt] text-print-muted">{job.location}</p>
           {job.progression && job.progression.length > 0 && (
-            <ul class="m-0 mt-1 list-none p-0 text-[8pt] text-gray-700">
+            <ul class="m-0 mt-1 list-none p-0 pl-2.5 text-[8pt] text-print-muted">
               {job.progression.map((role) => (
                 <li>
-                  <span class="font-medium">{role.role}</span>
-                  <span class="text-gray-600"> ({role.dates})</span>
+                  <span class="font-medium text-print-ink">{role.role}</span>
+                  <span> ({role.dates})</span>
                 </li>
               ))}
             </ul>
           )}
-          <ul class="m-0 mt-1 flex list-disc flex-col gap-0.5 pl-4">
+          <ul class="m-0 mt-1 flex list-disc flex-col gap-0.5 pl-4 marker:text-print-accent">
             {job.highlights.map((highlight) => (
-              <li>{highlight}</li>
+              <li class="text-print-ink">{highlight}</li>
             ))}
           </ul>
         </div>
@@ -77,9 +82,9 @@ const sectionHeading =
   {earlierRoles.length > 0 && (
     <section class="mb-2.5 break-inside-avoid">
       <h2 class={sectionHeading}>Earlier Roles</h2>
-      <ul class="m-0 flex list-disc flex-col gap-0.5 pl-4">
+      <ul class="m-0 flex list-disc flex-col gap-0.5 pl-4 marker:text-print-accent">
         {earlierRoles.map((role) => (
-          <li class="text-[8.5pt]">{role}</li>
+          <li class="text-[8.5pt] text-print-ink">{role}</li>
         ))}
       </ul>
     </section>
@@ -91,8 +96,8 @@ const sectionHeading =
       {skills.map((group) =>
         group.variant === "list" ? (
           <div>
-            <p class="m-0 font-semibold">{group.category}</p>
-            <ul class="m-0 mt-0.5 flex list-disc flex-col gap-0.5 pl-4">
+            <p class="m-0 font-semibold text-print-ink">{group.category}</p>
+            <ul class="m-0 mt-0.5 flex list-disc flex-col gap-0.5 pl-4 marker:text-print-accent">
               {group.items.map((item) => (
                 <li>{item}</li>
               ))}
@@ -100,7 +105,8 @@ const sectionHeading =
           </div>
         ) : (
           <p class="m-0">
-            <span class="font-semibold">{group.category}:</span> {group.items.join(", ")}
+            <span class="font-semibold text-print-accent">{group.category}:</span>{" "}
+            <span class="text-print-ink">{group.items.join(", ")}</span>
           </p>
         ),
       )}
@@ -109,25 +115,31 @@ const sectionHeading =
 
   <section class="mb-2.5 break-inside-avoid">
     <h2 class={sectionHeading}>Education</h2>
-    <ul class="m-0 flex list-none flex-col gap-0.5 p-0">
+    <ul class="m-0 flex list-none flex-col gap-1 p-0">
       {education.map((edu) => (
         <li>
-          <span class="font-semibold">{edu.degree}</span>
-          <span class="text-gray-700"> — {edu.institution} · {edu.location}</span>
+          <span class="font-semibold text-print-ink">{edu.degree}</span>
+          <span class="text-print-muted"> — {edu.institution} · {edu.location}</span>
         </li>
       ))}
     </ul>
   </section>
 
-  <section class="break-inside-avoid">
-    <h2 class={sectionHeading}>Certifications & Languages</h2>
-    <p class="m-0">
-      <span class="font-semibold">Certifications:</span>{" "}
-      {certifications.map((cert) => `${cert.name} (${cert.issuer}, ${cert.year})`).join(" · ")}
+  <section class="break-inside-avoid rounded-sm bg-print-accent-soft px-2.5 py-2">
+    <h2 class="mb-1 text-[7.5pt] font-bold tracking-[0.14em] text-print-accent uppercase">
+      Certifications & Languages
+    </h2>
+    <p class="m-0 text-[8.5pt]">
+      <span class="font-semibold text-print-ink">Certifications:</span>{" "}
+      <span class="text-print-muted">
+        {certifications.map((cert) => `${cert.name} (${cert.issuer}, ${cert.year})`).join(" · ")}
+      </span>
     </p>
-    <p class="m-0">
-      <span class="font-semibold">Languages:</span>{" "}
-      {languages.map((lang) => `${lang.name} (${lang.level})`).join(" · ")}
+    <p class="m-0 mt-0.5 text-[8.5pt]">
+      <span class="font-semibold text-print-ink">Languages:</span>{" "}
+      <span class="text-print-muted">
+        {languages.map((lang) => `${lang.name} (${lang.level})`).join(" · ")}
+      </span>
     </p>
   </section>
 </article>
