@@ -2,9 +2,17 @@
 
 /* PDF/print pages only — isolated from the public site styles. */
 
+@theme {
+  --color-print-accent: #881337;
+  --color-print-accent-soft: #fff1f2;
+  --color-print-ink: #1c1917;
+  --color-print-muted: #57534e;
+  --color-print-rule: #d6d3d1;
+}
+
 @page {
   size: A4;
-  margin: 0.9cm;
+  margin: 0.95cm;
 }
 
 html {
@@ -14,4 +22,5 @@ html {
 body {
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
+  color: var(--color-print-ink);
 }
