@@ -40,9 +40,11 @@ const {
             >
               {job.role}
             </h3>
-            <p class="mt-0.5 text-sm text-slate-500 dark:text-stone-400 print:text-black">
-              {job.company} · {job.location}
-            </p>
+            {(job.company || job.location) && (
+              <p class="mt-0.5 text-sm text-slate-500 dark:text-stone-400 print:text-black">
+                {[job.company, job.location].filter(Boolean).join(" · ")}
+              </p>
+            )}
           </div>
           <p class="m-0 shrink-0 text-sm font-medium whitespace-nowrap text-accent print:text-black">
             {job.startDate} – {job.endDate}
@@ -64,13 +66,15 @@ const {
         )}
         {!compact && (
           <>
-            <ul class="m-0 flex list-disc flex-col gap-1.5 pl-5 print:gap-1">
-              {job.highlights.map((highlight) => (
-                <li class="text-[0.9375rem] leading-relaxed text-slate-800 dark:text-stone-200 print:text-[0.8125rem] print:leading-snug">
-                  {highlight}
-                </li>
-              ))}
-            </ul>
+            {job.highlights.length > 0 && (
+              <ul class="m-0 flex list-disc flex-col gap-1.5 pl-5 print:gap-1">
+                {job.highlights.map((highlight) => (
+                  <li class="text-[0.9375rem] leading-relaxed text-slate-800 dark:text-stone-200 print:text-[0.8125rem] print:leading-snug">
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+            )}
             {job.skills && job.skills.length > 0 && (
               <div class="mt-3 flex flex-wrap gap-1.5 print:hidden">
                 {job.skills.map((skill) => (

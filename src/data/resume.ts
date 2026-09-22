@@ -167,11 +167,19 @@ const resumeBase: Omit<Resume, "summary"> = {
   summaries,
   experience: [
     {
+      role: "Full-time parental leave / caregiving",
+      company: "",
+      location: "Madrid",
+      startDate: "June 2026",
+      endDate: "Present",
+      highlights: [],
+    },
+    {
       role: "Software Engineer",
       company: "Opslayer",
       location: "Madrid · Remote",
       startDate: "June 2023",
-      endDate: "Present",
+      endDate: "June 2026",
       highlights: [
         "Owned end-to-end development of production React/TypeScript apps for Web3 products, including wallet connectivity, cross-chain bridging, and on-chain analytics.",
         "Built bridging SDKs that abstracted multi-system integrations for consuming teams, reducing integration complexity and improving developer experience.",
