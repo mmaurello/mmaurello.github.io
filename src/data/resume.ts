@@ -317,13 +317,12 @@ const resumeBase: Omit<Resume, "summary"> = {
     },
     {
       category: "Backend",
-      items: ["Node.js", "PHP", "Symfony", "Laravel"],
+      items: ["Node.js", "PHP", "Symfony", "Laravel", "GraphQL"],
     },
     {
       category: "Cloud & Tooling",
       items: [
         "AWS",
-        "GCP",
         "GH Actions",
         "Docker",
         "Playwright",
