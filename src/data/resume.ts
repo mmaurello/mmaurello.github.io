@@ -176,16 +176,17 @@ const resumeBase: Omit<Resume, "summary"> = {
     },
     {
       role: "Software Engineer",
-      company: "Opslayer",
+      company: "Purestake / Opslayer",
       location: "Madrid · Remote",
-      startDate: "June 2023",
+      startDate: "October 2021",
       endDate: "June 2026",
       highlights: [
+        "Early-stage, fast-paced Web3 startup; continued on the same team after Purestake spun out Opslayer (ops and web apps).",
         "Owned end-to-end development of production React/TypeScript apps for Web3 products, including wallet connectivity, cross-chain bridging, and on-chain analytics.",
-        "Built bridging SDKs that abstracted multi-system integrations for consuming teams, reducing integration complexity and improving developer experience.",
+        "Designed and built bridging SDKs that abstracted multi-system integrations for consuming teams, reducing integration complexity and improving developer adoption.",
         "Shipped wallet-connected product features and on-chain data querying across Polkadot/Substrate and EVM ecosystems.",
+        "Migrated web app infrastructure to AWS serverless services; operated production AWS infrastructure with 99.9% service uptime.",
         "Implemented CI/CD pipelines with GitHub Actions, improving deployment reliability and reducing downtime.",
-        "Operated and supported AWS infrastructure, maintaining 99.9% service uptime.",
       ],
       skills: [
         "React",
@@ -199,19 +200,6 @@ const resumeBase: Omit<Resume, "summary"> = {
         "Viem",
         "Solidity",
       ],
-    },
-    {
-      role: "Software Engineer",
-      company: "Purestake",
-      location: "Madrid · Remote",
-      startDate: "October 2021",
-      endDate: "June 2023",
-      highlights: [
-        "Built and maintained production React applications with complex third-party and contract integrations.",
-        "Designed and maintained blockchain bridging SDKs that improved developer adoption and integration speed for partner teams.",
-        "Migrated web app infrastructure to AWS serverless services, reducing deployment times and operational complexity.",
-      ],
-      skills: ["React", "TypeScript", "AWS", "Ethers.js", "Viem", "Wagmi", "Solidity"],
     },
     {
       role: "Full Stack Developer",
