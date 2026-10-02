@@ -59,11 +59,15 @@ const contactCta =
       <p class="mt-1 text-lg font-medium text-accent print:text-black">
         {header.title}
       </p>
-      <p class="mt-1.5 hidden text-sm text-slate-600 print:mt-1 print:block print:text-black">
+      <p
+        class="mt-1.5 hidden text-sm text-slate-600 print:mt-1 print:block print:text-black"
+      >
         {locationLine}
       </p>
-      <p class="mt-1 hidden text-xs leading-relaxed text-slate-600 print:block print:text-black">
-        {siteLink && siteLink.url}
+      <p
+        class="mt-1 hidden text-xs leading-relaxed text-slate-600 print:block print:text-black"
+      >
+        {siteLink?.url}
         {linkedInLink && ` · ${linkedInLink.url}`}
         {githubLink && ` · ${githubLink.url}`}
       </p>

@@ -95,7 +95,9 @@ export type ResumeVariant = keyof ResumeSummaries;
 
 export const RESUME_VARIANTS: ResumeVariant[] = ["general", "web3"];
 
-export function isResumeVariant(value: string | null | undefined): value is ResumeVariant {
+export function isResumeVariant(
+  value: string | null | undefined,
+): value is ResumeVariant {
   return value === "general" || value === "web3";
 }
 
@@ -147,9 +149,8 @@ export const resumePdfs: Record<ResumeVariant, ResumePdfMeta> = {
 
 export const summaries: ResumeSummaries = {
   general:
-    "Full-Stack Engineer with 8+ years building and shipping production web applications across React, TypeScript, PHP, and AWS. Strong end-to-end ownership across frontend, APIs, CI/CD, and cloud infrastructure, and experience leading a cross-functional team of 6 (developers and QA) through agile delivery. Recent work includes production client apps and developer SDKs with high reliability requirements, which is experience that transfers well to any product-focused engineering team.",
-  web3:
-    "Full-Stack Engineer with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on work across frontend, on-chain integrations, CI/CD, and cloud infrastructure. Also brings experience leading a cross-functional team of 6 through agile product delivery.",
+    "Full-Stack Engineer with 8+ years of end-to-end ownership shipping production web applications across React, TypeScript, PHP, and AWS. Comfortable working across the stack as a generalist: frontend, APIs, CI/CD, cloud infrastructure, and the product decisions that come with owning a feature from idea to production. Recent work includes client apps and developer SDKs with high reliability requirements in fast-paced product environments. Also experienced leading a cross-functional team of 6 (developers and QA) through delivery.",
+  web3: "Full-Stack Engineer with 8+ years of end-to-end ownership shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: owned Polkadot/Substrate and EVM products and cross-chain bridging SDKs end to end, working across frontend, on-chain integrations, CI/CD, and cloud infrastructure in fast-paced environments. Also experienced leading a cross-functional team of 6 (developers and QA) through delivery.",
 };
 
 const resumeBase: Omit<Resume, "summary"> = {
@@ -175,17 +176,18 @@ const resumeBase: Omit<Resume, "summary"> = {
       highlights: [],
     },
     {
-      role: "Software Engineer",
-      company: "Opslayer",
+      role: "Full-Stack Software Engineer",
+      company: "Purestake / Opslayer",
       location: "Madrid · Remote",
-      startDate: "June 2023",
+      startDate: "October 2021",
       endDate: "June 2026",
       highlights: [
-        "Owned end-to-end development of production React/TypeScript apps for Web3 products, including wallet connectivity, cross-chain bridging, and on-chain analytics.",
-        "Built bridging SDKs that abstracted multi-system integrations for consuming teams, reducing integration complexity and improving developer experience.",
+        "Early-stage, fast-paced Web3 startup; continued on the same team after Purestake spun out Opslayer (ops and web apps).",
+        "Owned end-to-end development of production React/TypeScript apps for Web3 products, including product and UX decisions for wallet connectivity, cross-chain bridging, and on-chain analytics, so users got coherent flows instead of chain-by-chain one-offs.",
+        "Designed and built bridging SDKs that abstracted multi-system integrations for consuming teams, with docs, examples, and starter guides to speed adoption.",
+        "Implemented CI/CD with GitHub Actions and automated testing with Playwright and Vitest, improving deployment reliability and reducing downtime.",
         "Shipped wallet-connected product features and on-chain data querying across Polkadot/Substrate and EVM ecosystems.",
-        "Implemented CI/CD pipelines with GitHub Actions, improving deployment reliability and reducing downtime.",
-        "Operated and supported AWS infrastructure, maintaining 99.9% service uptime.",
+        "Migrated web app infrastructure to AWS serverless to cut deploy complexity and ops load; operated production services with 99.9% uptime.",
       ],
       skills: [
         "React",
@@ -193,25 +195,14 @@ const resumeBase: Omit<Resume, "summary"> = {
         "Next.js",
         "AWS",
         "GitHub Actions",
+        "Playwright",
+        "Vitest",
         "Polkadot.js",
         "Wagmi",
         "Ethers.js",
         "Viem",
         "Solidity",
       ],
-    },
-    {
-      role: "Software Engineer",
-      company: "Purestake",
-      location: "Madrid · Remote",
-      startDate: "October 2021",
-      endDate: "June 2023",
-      highlights: [
-        "Built and maintained production React applications with complex third-party and contract integrations.",
-        "Designed and maintained blockchain bridging SDKs that improved developer adoption and integration speed for partner teams.",
-        "Migrated web app infrastructure to AWS serverless services, reducing deployment times and operational complexity.",
-      ],
-      skills: ["React", "TypeScript", "AWS", "Ethers.js", "Viem", "Wagmi", "Solidity"],
     },
     {
       role: "Full Stack Developer",
@@ -329,15 +320,7 @@ const resumeBase: Omit<Resume, "summary"> = {
     },
     {
       category: "Cloud & Tooling",
-      items: [
-        "AWS",
-        "GH Actions",
-        "Docker",
-        "Playwright",
-        "Vitest",
-        "Jest",
-        "Postman",
-      ],
+      items: ["AWS", "GH Actions", "Docker", "Playwright", "Vitest", "Jest", "Postman"],
     },
     {
       category: "Data",
