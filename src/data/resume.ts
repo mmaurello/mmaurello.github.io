@@ -147,9 +147,9 @@ export const resumePdfs: Record<ResumeVariant, ResumePdfMeta> = {
 
 export const summaries: ResumeSummaries = {
   general:
-    "Full-Stack Engineer with 8+ years building and shipping production web applications across React, TypeScript, PHP, and AWS. Strong end-to-end ownership across frontend, APIs, CI/CD, and cloud infrastructure, and experience leading a cross-functional team of 6 (developers and QA) through agile delivery. Recent work includes production client apps and developer SDKs with high reliability requirements, which is experience that transfers well to any product-focused engineering team.",
+    "Full-Stack Engineer with 8+ years of end-to-end ownership shipping production web applications across React, TypeScript, PHP, and AWS. Comfortable working across the stack as a generalist: frontend, APIs, CI/CD, cloud infrastructure, and the product decisions that come with owning a feature from idea to production. Recent work includes client apps and developer SDKs with high reliability requirements in fast-paced product environments. Also experienced leading a cross-functional team of 6 (developers and QA) through delivery.",
   web3:
-    "Full-Stack Engineer with 8+ years building and shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: recently owned end-to-end development of Polkadot/Substrate and EVM dApps and cross-chain bridging SDKs, with hands-on work across frontend, on-chain integrations, CI/CD, and cloud infrastructure. Also brings experience leading a cross-functional team of 6 through agile product delivery.",
+    "Full-Stack Engineer with 8+ years of end-to-end ownership shipping production systems across React, TypeScript, PHP, and AWS. Specialized in Web3 and dApps: owned Polkadot/Substrate and EVM products and cross-chain bridging SDKs end to end, working across frontend, on-chain integrations, CI/CD, and cloud infrastructure in fast-paced environments. Also experienced leading a cross-functional team of 6 (developers and QA) through delivery.",
 };
 
 const resumeBase: Omit<Resume, "summary"> = {
