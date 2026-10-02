@@ -182,11 +182,11 @@ const resumeBase: Omit<Resume, "summary"> = {
       endDate: "June 2026",
       highlights: [
         "Early-stage, fast-paced Web3 startup; continued on the same team after Purestake spun out Opslayer (ops and web apps).",
-        "Owned end-to-end development of production React/TypeScript apps for Web3 products, including wallet connectivity, cross-chain bridging, and on-chain analytics.",
-        "Designed and built bridging SDKs that abstracted multi-system integrations for consuming teams, reducing integration complexity and improving developer adoption.",
+        "Owned end-to-end development of production React/TypeScript apps for Web3 products, including product and UX decisions for wallet connectivity, cross-chain bridging, and on-chain analytics.",
+        "Designed and built bridging SDKs that abstracted multi-system integrations for consuming teams, with docs, examples, and starter guides to speed adoption.",
+        "Implemented CI/CD with GitHub Actions and automated testing with Playwright and Vitest, improving deployment reliability and reducing downtime.",
         "Shipped wallet-connected product features and on-chain data querying across Polkadot/Substrate and EVM ecosystems.",
         "Migrated web app infrastructure to AWS serverless services; operated production AWS infrastructure with 99.9% service uptime.",
-        "Implemented CI/CD pipelines with GitHub Actions, improving deployment reliability and reducing downtime.",
       ],
       skills: [
         "React",
@@ -194,6 +194,8 @@ const resumeBase: Omit<Resume, "summary"> = {
         "Next.js",
         "AWS",
         "GitHub Actions",
+        "Playwright",
+        "Vitest",
         "Polkadot.js",
         "Wagmi",
         "Ethers.js",
