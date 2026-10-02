@@ -60,10 +60,9 @@ function formatRange(startDate: string, endDate: string): string {
   return `${shortenDate(startDate)} – ${shortenDate(endDate)}`;
 }
 
-/** Cap bullets for PDF density without inventing new content. */
-function printHighlights(highlights: string[], max = 4): string[] {
-  if (highlights.length <= max) return highlights;
-  return highlights.slice(0, max);
+/** Pass through experience bullets for PDF; resume.ts is the density budget. */
+function printHighlights(highlights: string[]): string[] {
+  return highlights;
 }
 
 function toPrintExperience(entry: ExperienceEntry): PrintExperienceEntry {
