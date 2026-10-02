@@ -7,14 +7,27 @@ interface Props {
 }
 
 const { variant = "general" } = Astro.props;
-const { header, summary, experience, earlierRoles, education, skills, certifications, languages } =
-  getPrintResume(variant);
+const {
+  header,
+  summary,
+  experience,
+  earlierRoles,
+  education,
+  skills,
+  certifications,
+  languages,
+} = getPrintResume(variant);
 
 function displayUrl(url: string) {
-  return url.replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/$/, "");
+  return url
+    .replace(/^https?:\/\//, "")
+    .replace(/^www\./, "")
+    .replace(/\/$/, "");
 }
 
-const locationLine = [header.location, header.workAuthorization].filter(Boolean).join(" · ");
+const locationLine = [header.location, header.workAuthorization]
+  .filter(Boolean)
+  .join(" · ");
 const sectionHeading =
   "mb-1.5 border-b border-print-accent pb-0.5 text-[7.5pt] font-bold tracking-[0.14em] text-print-accent uppercase";
 ---

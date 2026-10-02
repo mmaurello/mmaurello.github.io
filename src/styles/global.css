@@ -103,8 +103,8 @@
   }
 
   .reveal {
-    opacity: 1 !important;
-    transform: none !important;
+    opacity: 1;
+    transform: none;
   }
 
   #summary {
@@ -126,7 +126,7 @@
 
   #resume-header,
   [id].rounded-xl {
-    box-shadow: none !important;
+    box-shadow: none;
   }
 
   .header-accent__stroke {
