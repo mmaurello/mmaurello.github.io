@@ -27,6 +27,7 @@ export interface PrintExperienceEntry {
 export interface PrintResume {
   header: Header;
   summary: string;
+  experienceNote?: string;
   experience: PrintExperienceEntry[];
   earlierRoles: string[];
   education: EducationEntry[];
@@ -85,6 +86,7 @@ export function getPrintResume(variant: ResumeVariant = "general"): PrintResume 
   return {
     header: resume.header,
     summary: resume.summary,
+    experienceNote: resume.experienceNote,
     experience: resume.experience.map(toPrintExperience),
     earlierRoles: (resume.previousExperience ?? []).map(
       (entry) =>
