@@ -5,6 +5,7 @@ import SkillChip from "./SkillChip.astro";
 
 interface Props {
   experience: ExperienceEntry[];
+  note?: string;
   title?: string;
   compact?: boolean;
   id?: string;
@@ -13,6 +14,7 @@ interface Props {
 
 const {
   experience,
+  note,
   title = "Experience",
   compact = false,
   id,
@@ -21,6 +23,11 @@ const {
 ---
 
 <Section title={title} id={id} class={className}>
+  {note && (
+    <p class="m-0 mb-4 text-sm leading-relaxed text-slate-500 dark:text-stone-400 print:mb-2 print:text-[0.8125rem] print:text-black">
+      {note}
+    </p>
+  )}
   <ul class="m-0 flex list-none flex-col gap-6 p-0 print:gap-3">
     {experience.map((job, index) => (
       <li

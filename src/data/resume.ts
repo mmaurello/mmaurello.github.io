@@ -115,6 +115,8 @@ export interface Resume {
   header: Header;
   summary: string;
   summaries: ResumeSummaries;
+  /** Short muted line above Experience (e.g. availability / gap context). */
+  experienceNote?: string;
   experience: ExperienceEntry[];
   previousExperience?: ExperienceEntry[];
   education: EducationEntry[];
@@ -166,15 +168,9 @@ const resumeBase: Omit<Resume, "summary"> = {
     ],
   },
   summaries,
+  experienceNote:
+    "Available to start immediately · career break for childcare since June 2026",
   experience: [
-    {
-      role: "Full-time parental leave / caregiving",
-      company: "",
-      location: "Madrid",
-      startDate: "June 2026",
-      endDate: "Present",
-      highlights: [],
-    },
     {
       role: "Full-Stack Software Engineer",
       company: "Purestake / Opslayer",

@@ -10,6 +10,7 @@ const { variant = "general" } = Astro.props;
 const {
   header,
   summary,
+  experienceNote,
   experience,
   earlierRoles,
   education,
@@ -59,6 +60,9 @@ const sectionHeading =
 
   <section class="mb-2.5">
     <h2 class={sectionHeading}>Experience</h2>
+    {experienceNote && (
+      <p class="m-0 mb-1.5 text-[8.5pt] text-print-muted">{experienceNote}</p>
+    )}
     <div class="flex flex-col gap-2.5">
       {experience.map((job) => (
         <div class="break-inside-avoid">

@@ -22,6 +22,7 @@ const { variant = "general" } = Astro.props;
 const {
   header,
   summary,
+  experienceNote,
   experience,
   previousExperience,
   education,
@@ -42,7 +43,12 @@ const description =
   <SectionNav links={sectionNav} />
   <div class="flex flex-col gap-4 sm:gap-5 print:gap-0">
     <Summary summary={summary} />
-    <Experience experience={experience} id="experience" class="print:border-t-0" />
+    <Experience
+      experience={experience}
+      note={experienceNote}
+      id="experience"
+      class="print:border-t-0"
+    />
   </div>
   {previousExperience && previousExperience.length > 0 && (
     <Experience experience={previousExperience} title="Earlier Roles" compact id="earlier-roles" />
