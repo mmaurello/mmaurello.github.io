@@ -301,7 +301,7 @@ const resumeBase: Omit<Resume, "summary"> = {
         "Service integrations (REST APIs, WebSockets, SDKs)",
         "CI/CD pipelines, automated testing, and QA",
         "Cloud infrastructure and deployment automation (AWS)",
-        "AI-assisted development (design, testing, and shipping)",
+        "AI-native development with coding agents, including multi-agent orchestration across design, implementation, testing, and shipping",
         "Agile delivery and cross-functional collaboration",
         "Domain experience in Web3 / dApps (Polkadot and EVM)",
       ],
