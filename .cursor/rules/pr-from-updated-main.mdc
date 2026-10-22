@@ -1,0 +1,14 @@
+---
+description: When creating a PR, always branch from an updated main
+alwaysApply: true
+---
+
+# PR: branch from updated main
+
+When the user asks to create a pull request, always start the branch from the latest `main`:
+
+1. Fetch and update local `main` first (`git fetch origin main` then checkout/pull, or equivalent)
+2. Create the new branch from that updated `main` (not from the current feature branch or a stale local `main`)
+3. Then apply/commit the work on that branch and open the PR
+
+Do not open a PR from a branch that was created off an outdated `main` without updating first.
