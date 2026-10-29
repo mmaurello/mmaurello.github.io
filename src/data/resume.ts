@@ -179,11 +179,12 @@ const resumeBase: Omit<Resume, "summary"> = {
       endDate: "June 2026",
       highlights: [
         "Early-stage, fast-paced Web3 startup; continued on the same team after Purestake spun out Opslayer (ops and web apps).",
-        "Owned end-to-end development of production React/TypeScript apps for Web3 products, including product and UX decisions for wallet connectivity, cross-chain bridging, and on-chain analytics, so users got coherent flows instead of chain-by-chain one-offs.",
-        "Designed and built bridging SDKs that abstracted multi-system integrations for consuming teams, with docs, examples, and starter guides to speed adoption.",
-        "Implemented CI/CD with GitHub Actions and automated testing with Playwright and Vitest, improving deployment reliability and reducing downtime.",
-        "Shipped wallet-connected product features and on-chain data querying across Polkadot/Substrate and EVM ecosystems.",
-        "Migrated web app infrastructure to AWS serverless to cut deploy complexity and ops load; operated production services with 99.9% uptime.",
+        "Owned the Moonbeam and Tanssi web apps end to end (React, TypeScript, Next.js): staking, governance, bridging, and proxies, with wallet connectivity for MetaMask, Talisman, WalletConnect, and other wallets.",
+        "Made the product and UX decisions on those flows so users got coherent paths instead of chain-by-chain one-offs.",
+        "Built Moonbeam's public bridging SDKs, @moonbeam-network/xcm-sdk for Polkadot transfers and @moonbeam-network/mrl for Ethereum routes, abstracting that complexity for consuming teams. Shared chain config and signers across both, with docs, examples, and starter guides so integrators could adopt one route set without the other.",
+        "Co-owned a Node.js data service (AWS serverless, DynamoDB, TanStack Query) that collected on-chain and indexer data and served it to the Moonbeam and Tanssi apps.",
+        "Set up GitHub Actions CI/CD and automated tests with Playwright and Vitest.",
+        "Migrated web app infrastructure to AWS serverless and operated production services at 99.9% uptime.",
       ],
       skills: [
         "React",
