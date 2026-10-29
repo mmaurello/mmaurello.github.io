@@ -168,8 +168,6 @@ const resumeBase: Omit<Resume, "summary"> = {
     ],
   },
   summaries,
-  experienceNote:
-    "Available to start immediately · career break for childcare since June 2026",
   experience: [
     {
       role: "Full-Stack Software Engineer",
@@ -190,6 +188,12 @@ const resumeBase: Omit<Resume, "summary"> = {
         "React",
         "TypeScript",
         "Next.js",
+        "Node.js",
+        "tRPC",
+        "TanStack",
+        "Jotai",
+        "PostgreSQL",
+        "Drizzle",
         "AWS",
         "GitHub Actions",
         "Playwright",
@@ -309,11 +313,11 @@ const resumeBase: Omit<Resume, "summary"> = {
     },
     {
       category: "Frontend",
-      items: ["TypeScript", "React", "Next.js", "Astro"],
+      items: ["TypeScript", "React", "Next.js", "TanStack", "Jotai", "Astro"],
     },
     {
       category: "Backend",
-      items: ["Node.js", "PHP", "Symfony", "Laravel", "GraphQL"],
+      items: ["Node.js", "tRPC", "PHP", "Symfony", "Laravel", "GraphQL"],
     },
     {
       category: "Cloud & Tooling",
